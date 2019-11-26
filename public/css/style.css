@@ -1,0 +1,14 @@
+.nav-line{
+     text-decoration: underline;
+ }
+
+.active{
+    color: #9b0000 !important;
+    font-weight: bolder;
+}
+
+.image-slide{
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+}
