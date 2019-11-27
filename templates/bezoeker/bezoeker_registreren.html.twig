@@ -6,8 +6,8 @@
             Om gebruik te kunnen maken van de lessen moet je bij ons bekend zijn.
             Vul hieronder alle gegevens in en registreer jezelf
         </p>
-        <form action="" method="post" class="w-100">
-            <div class="mb-2">
+        <form action="" method="post" class="w-100 mb-5">
+            <div class="mb-5">
                 <div class="form-group row">
                     <label for="" class="col-sm-2">Voornaam*</label>
                     <input type="text" class="form-control col-sm-10">
@@ -56,6 +56,11 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="" class="col-sm-2">Straat*:</label>
+                    <input type="text" class="form-control col-sm-8 col-md-offset-2">
+                    <input type="text" class="form-control col-sm-2 col-md-offset-2">
+                </div>
+                <div class="form-group row">
                     <label for="" class="col-sm-2">Postcode*</label>
                     <input type="text" class="form-control col-sm-2">
                 </div>
@@ -68,7 +73,10 @@
                     <input type="email" class="form-control col-sm-10">
                 </div>
             </div>
-            <button type="submit " class="justify-content-center">Registreer</button>
+            <div class="col-6">
+                <button type="submit" class="" style="margin-left: 100%">Registreer</button>
+            </div>
+            </hr>
         </form>
     </div>
 {% endblock %}
