@@ -31,32 +31,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            <li class="nav-item">
-                {% if (page_name == 'app_bezoeker_home') %}
-                    <a class="nav-link nav-line text-danger active" href={{ path('app_bezoeker_home') }}>Home</a>
-                {% else %}
-                    <a class="nav-link nav-line text-danger" href={{ path('app_bezoeker_home') }}>Home</a>
-                {% endif %}
-            <li class="nav-item">
-                {% if (page_name == 'app_bezoeker_trainings_aanbod') %}
-                    <a class="nav-link nav-line text-danger active" href="{{ path('app_bezoeker_home') }}">Trainings Aanbod</a>
-                {% else %}
-                    <a class="nav-link nav-line text-danger" href="{{ path('app_bezoeker_home') }}">Trainings Aanbod</a>
-                {% endif %}
+                <a class="nav-link nav-line text-danger {{ (page_name == 'app_bezoeker_home')?'active':'' }} " href={{ path('app_bezoeker_home') }}>Home</a>
             </li>
             <li class="nav-item">
-                {% if (page_name == 'app_bezoeker_registreren') %}
-                    <a class="nav-link nav-line text-danger active" href="{{ path('app_bezoeker_registreren') }}">Lid worden</a>
-                {% else %}
-                <a class="nav-link nav-line text-danger" href="{{ path('app_bezoeker_registreren') }}">Lid worden</a>
-                {% endif %}
+                <a class="nav-link nav-line text-danger {{ (page_name == 'app_bezoeker_trainings_aanbod')?'active':'' }} " href={{ path('app_bezoeker_trainings_aanbod') }}>Trainings Aanbod</a>
             </li>
             <li class="nav-item">
-                {% if (page_name == 'app_bezoeker_contact') %}
-                    <a class="nav-link nav-line text-danger active" href="{{ path('app_bezoeker_home') }}">Locatie & contact</a>
-                {% else %}
-                    <a class="nav-link nav-line text-danger" href="{{ path('app_bezoeker_home') }}">Locatie & contact</a>
-                {% endif %}
+                <a class="nav-link nav-line text-danger {{ (page_name == 'app_bezoeker_registreren')?'active':'' }} " href={{ path('app_bezoeker_registreren') }}>Lid worden</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-line text-danger {{ (page_name == 'app_bezoeker_contact')?'active':'' }} " href={{ path('app_bezoeker_contact') }}>Locatie & contact</a>
             </li>
         </ul>
     </div>
