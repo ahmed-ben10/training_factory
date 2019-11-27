@@ -12,3 +12,8 @@
     width: 100%;
     height: 500px;
 }
+
+.content-title{
+    font-size: 100%;
+    font-weight: bolder;
+}
