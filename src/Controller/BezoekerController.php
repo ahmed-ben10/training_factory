@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Form\BezoekerFormType;
+use App\Repository\TrainingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,9 +22,9 @@ class BezoekerController extends AbstractController
     /**
      * @Route("/bezoeker_trainings_aanbod",name="bezoeker_trainings_aanbod")
      */
-    public function trainingsAanbod()
+    public function trainingsAanbod(TrainingRepository $trainingen)
     {
-        return $this->render('bezoeker/trainings_aanbod.html.twig', ['page_name' => 'bezoeker_trainings_aanbod']);
+        return $this->render('bezoeker/trainings_aanbod.html.twig', ['page_name' => 'bezoeker_trainings_aanbod', 'trainingen'=>$trainingen->findAll()]);
 
     }
 
@@ -31,7 +33,8 @@ class BezoekerController extends AbstractController
      */
     public function registreren()
     {
-        return $this->render('bezoeker/bezoeker_registreren.html.twig', ['page_name' => 'bezoeker_registreren']);
+        $bezoekerForm =  $this->createForm(BezoekerFormType::class);
+        return $this->render('bezoeker/bezoeker_registreren.html.twig', ['page_name' => 'bezoeker_registreren', 'bezoekerForm'=>$bezoekerForm->createView()]);
     }
 
     /**

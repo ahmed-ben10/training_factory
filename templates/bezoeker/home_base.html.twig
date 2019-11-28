@@ -24,60 +24,67 @@
             <hr class="bg-danger m-0">
         </div>
         <nav class="navbar navbar-expand-lg p-0 navbar-light">
-        <button class="navbar-toggler bg-danger ml-auto my-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_home')?'active':'' }} " href={{ path('bezoeker_home') }}>Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_trainings_aanbod')?'active':'' }} " href={{ path('bezoeker_trainings_aanbod') }}>Trainings Aanbod</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_registreren')?'active':'' }} " href={{ path('bezoeker_registreren') }}>Lid worden</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_regels')?'active':'' }} " href={{ path('bezoeker_regels') }}>Gedragsregels</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_contact')?'active':'' }} " href={{ path('bezoeker_contact') }}>Locatie & contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <button class="navbar-toggler bg-danger ml-auto my-2" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_home')?'active':'' }} "
+                           href={{ path('bezoeker_home') }}>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_trainings_aanbod')?'active':'' }} "
+                           href={{ path('bezoeker_trainings_aanbod') }}>Trainings Aanbod</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_registreren')?'active':'' }} "
+                           href={{ path('bezoeker_registreren') }}>Lid worden</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_regels')?'active':'' }} "
+                           href={{ path('bezoeker_regels') }}>Gedragsregels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-line text-danger {{ (page_name == 'bezoeker_contact')?'active':'' }} "
+                           href={{ path('bezoeker_contact') }}>Locatie & contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     {% endblock %}
     {% block header %}
-    <div class="w-100 border border-secondary mb-5">
-        <div class="d-none d-xl-block">
-            <div class="row w-100 m-0 mt-1 mb-3">
-                <div class="col-md-4 mb-2">
-                    <img src="{{ asset('img/foto_1.png') }}" class="image-slide" alt="foto_1">
-                </div>
-                <div class="col-md-4 mb-2">
-                    <img src="{{ asset('img/foto_2.png') }}" class="image-slide" alt="foto_1">
-                </div>
-                <div class="col-md-4 mb-2">
-                    <img src="{{ asset('img/foto_3.png') }}" class="image-slide" alt="foto_1">
-                </div>
+<div class="w-100 border border-secondary mb-5">
+    <div class="d-none d-xl-block">
+        <div class="row w-100 m-0 mt-1 mb-3">
+            <div class="col-md-4 mb-2">
+                <img src="{{ asset('img/foto_1.png') }}" class="image-slide" alt="foto_1">
+            </div>
+            <div class="col-md-4 mb-2">
+                <img src="{{ asset('img/foto_2.png') }}" class="image-slide" alt="foto_1">
+            </div>
+            <div class="col-md-4 mb-2">
+                <img src="{{ asset('img/foto_3.png') }}" class="image-slide" alt="foto_1">
             </div>
         </div>
-        <div class="d-xl-none">
-            <div class="row w-100 m-0 mt-1 mb-3">
-                <div class="col-xl-12 mb-2">
-                    <img src="{{ asset('img/foto_1.png') }}" class="image-slide" alt="foto_1">
-                </div>
+    </div>
+    <div class="d-xl-none">
+        <div class="row w-100 m-0 mt-1 mb-3">
+            <div class="col-xl-12 mb-2">
+                <img src="{{ asset('img/foto_1.png') }}" class="image-slide" alt="foto_1">
             </div>
         </div>
+    </div>
     {% endblock %}
     {% block main %}{% endblock %}
     {% block footer %}
-        <footer class="fixed-bottom w-100 p-1 bg-secondary text-center">
-            <p class="text-danger">Training Centrum Den Haag 010 519 0532</p>
-            <small class="text-white">developed bij FastDevelopment 2019</small>
-        </footer>
-    {% endblock %}
+</div>
+    <footer class="fixed-bottom w-100 p-1 bg-secondary text-center">
+        <p class="text-danger">Training Centrum Den Haag 010 519 0532</p>
+        <small class="text-white">developed bij FastDevelopment 2019</small>
+    </footer>
+{% endblock %}
 
 

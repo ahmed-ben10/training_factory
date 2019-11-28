@@ -17,3 +17,9 @@
     font-size: 100%;
     font-weight: bolder;
 }
+
+.card-image{
+    width:100%;
+    height: 250px;
+    object-fit: cover;
+}

@@ -1,7 +1,48 @@
 {% extends 'bezoeker/home_base.html.twig' %}
 
 {% block main %}
-    <div class="container mb-5"></div>
+    <div class="container mb-5">
+        <p class="content-title text-danger">Trainingen</p>
+        <hr class="border border-danger"/>
+        <div class="row">
+            {% for training in trainingen %}
+                <div class="col-sm-4">
+                    <div class="card w-100" style="width: 18rem;">
+                        <img class="card-img-top card-image" src="{{ asset("img/#{training.naam}.png") }}" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-title">{{training.naam}}</p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ training.id }}">
+                                Meer informatie
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="{{ training.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">{{ training.naam }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img class="card-img-top card-image  mb-2" src="{{ asset("img/#{training.naam}.png") }}" alt="Card image cap">
+                                <p>{{ training.description }}</p>
+                                <hr/>
+                                {% if training.costs is defined %}
+                                    <p>Kosten: &euro;{{ training.costs }}</p>
+                                {% endif %}
+                                <p>Training tijd: {{ training.duration|date("g:i")}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
 {% endblock %}
 
 
