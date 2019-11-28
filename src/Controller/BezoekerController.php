@@ -4,13 +4,16 @@
 namespace App\Controller;
 
 
+use App\Entity\Member;
 use App\Entity\Person;
 use App\Form\BezoekerFormType;
 use App\Repository\MemberRepository;
 use App\Repository\PersonRepository;
 use App\Repository\TrainingRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BezoekerController extends AbstractController
@@ -35,13 +38,36 @@ class BezoekerController extends AbstractController
     /**
      * @Route("/registreren",name="bezoeker_registreren")
      */
-    public function registreren(PersonRepository $personRepository, Request $request, MemberRepository $memberRepository)
+    public function registreren(EntityManagerInterface $em, Request $request)
     {
 
         $bezoekerForm =  $this->createForm(BezoekerFormType::class);
         $bezoekerForm->handleRequest($request);
         if($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()){
             $data = $bezoekerForm->getData();
+            $person = new Person();
+            $member = new Member();
+            $person->setLoginname($data['gebruikersnaam']);
+            $person->setPassword($data['wachtwoord']);
+            $person->setFirstname($data['voornaam']);
+            $person->setPreprovision($data['tussenvoegsel']);
+            $person->setLastname($data['achternaam']);
+            $person->setDateofbirth($data['geboortedatum']);
+            $person->setPersonType('Member');
+            $person->setGender($data['gender']);
+            $person->setEmailaddress($data['email']);
+            $em->persist($person);
+            $em->flush();
+
+
+            $member->setStreet($data['straat']);
+            $member->setPostalCode($data['stad']);
+            $member->setPlace($data['email']);
+            $member->setPerson($person);
+            $em->persist($member);
+            $em->flush();
+            return $this->redirectToRoute('bezoeker_home');
+
 
         }
         return $this->render('bezoeker/bezoeker_registreren.html.twig', ['page_name' => 'bezoeker_registreren', 'bezoekerForm'=>$bezoekerForm->createView()]);
