@@ -4,9 +4,13 @@
 namespace App\Controller;
 
 
+use App\Entity\Person;
 use App\Form\BezoekerFormType;
+use App\Repository\MemberRepository;
+use App\Repository\PersonRepository;
 use App\Repository\TrainingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BezoekerController extends AbstractController
@@ -31,9 +35,15 @@ class BezoekerController extends AbstractController
     /**
      * @Route("/registreren",name="bezoeker_registreren")
      */
-    public function registreren()
+    public function registreren(PersonRepository $personRepository, Request $request, MemberRepository $memberRepository)
     {
+
         $bezoekerForm =  $this->createForm(BezoekerFormType::class);
+        $bezoekerForm->handleRequest($request);
+        if($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()){
+            $data = $bezoekerForm->getData();
+
+        }
         return $this->render('bezoeker/bezoeker_registreren.html.twig', ['page_name' => 'bezoeker_registreren', 'bezoekerForm'=>$bezoekerForm->createView()]);
     }
 
