@@ -1,4 +1,4 @@
-{% extends 'bezoeker/home_base.html.twig' %}
+{% extends 'bezoeker/bezoeker_base.html.twig' %}
 {% block main %}
     <div class=" mt-2 mb-5 w-75 container">
         <p class="text-danger content-title">Lid worden</p>
@@ -80,73 +80,73 @@
         {#            </hr>#}
         {#        </form>#}
         {{ form_start(bezoekerForm) }}
-        <div class="mb-5">
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.voornaam, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.voornaam) }}
-                {{ form_widget(bezoekerForm.voornaam) }}
+            <div class="mb-5">
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.voornaam, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.voornaam) }}
+                    {{ form_widget(bezoekerForm.voornaam) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.tussenvoegsel, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.tussenvoegsel) }}
+                    {{ form_widget(bezoekerForm.tussenvoegsel) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.achternaam, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.achternaam) }}
+                    {{ form_widget(bezoekerForm.achternaam) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.geboortedatum, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.geboortedatum) }}
+                    {{ form_widget(bezoekerForm.geboortedatum) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.gebruikersnaam, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.gebruikersnaam) }}
+                    {{ form_widget(bezoekerForm.gebruikersnaam) }}
+                    <p class="col-lg-5">(te gebruiken om in te loggen)</p>
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.wachtwoord, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.wachtwoord) }}
+                    {{ form_widget(bezoekerForm.wachtwoord) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.herhaling_wachtwoord, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.herhaling_wachtwoord) }}
+                    {{ form_widget(bezoekerForm.herhaling_wachtwoord) }}
+                    <p class="col-lg-12">het wachtwoord is nodig om in te loggen, moet minstens 6 teken bevaten.</p>
+                </div>
             </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.tussenvoegsel, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.tussenvoegsel) }}
-                {{ form_widget(bezoekerForm.tussenvoegsel) }}
+            <div class="mb-2">
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.gender, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.gender) }}
+                    {{ form_widget(bezoekerForm.gender) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.straat, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.straat) }}
+                    {{ form_widget(bezoekerForm.straat) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.postcode, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.postcode) }}
+                    {{ form_widget(bezoekerForm.postcode) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.stad, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.stad) }}
+                    {{ form_widget(bezoekerForm.stad) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(bezoekerForm.email, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
+                    {{ form_errors(bezoekerForm.email) }}
+                    {{ form_widget(bezoekerForm.email) }}
+                </div>
             </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.achternaam, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.achternaam) }}
-                {{ form_widget(bezoekerForm.achternaam) }}
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.geboortedatum, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.geboortedatum) }}
-                {{ form_widget(bezoekerForm.geboortedatum) }}
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.gebruikersnaam, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.gebruikersnaam) }}
-                {{ form_widget(bezoekerForm.gebruikersnaam) }}
-                <p class="col-lg-5">(te gebruiken om in te loggen)</p>
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.wachtwoord, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.wachtwoord) }}
-                {{ form_widget(bezoekerForm.wachtwoord) }}
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.herhaling_wachtwoord, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.herhaling_wachtwoord) }}
-                {{ form_widget(bezoekerForm.herhaling_wachtwoord) }}
-                <p class="col-lg-12">het wachtwoord is nodig om in te loggen, moet minstens 6 teken bevaten.</p>
-            </div>
-        </div>
-        <div class="mb-2">
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.gender, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.gender) }}
-                {{ form_widget(bezoekerForm.gender) }}
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.straat, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.straat) }}
-                {{ form_widget(bezoekerForm.straat) }}
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.postcode, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.postcode) }}
-                {{ form_widget(bezoekerForm.postcode) }}
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.stad, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.stad) }}
-                {{ form_widget(bezoekerForm.stad) }}
-            </div>
-            <div class="form-group row">
-                {{ form_label(bezoekerForm.email, null, { 'label_attr': {'class': 'col-lg-2'} }) }}
-                {{ form_errors(bezoekerForm.email) }}
-                {{ form_widget(bezoekerForm.email) }}
-            </div>
-        </div>
-        <button type="submit" class="" style="margin-left: 100%">Registreer</button>
+            <button type="submit" class="btn btn-success">Registreer</button>
         {{ form_end(bezoekerForm) }}
     </div>
 {% endblock %}

@@ -2,10 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/admin_home.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/admin_leden.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/admin_trainingen.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Person.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191128084120.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191128084327.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191128195800.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/bezoeker_regels.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/bezoeker_regels.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/bezoeker/bezoeker_registreren.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/bezoeker_registreren.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/contact.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/home_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/bezoeker_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/trainings_aanbod.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/trainings_aanbod.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +139,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

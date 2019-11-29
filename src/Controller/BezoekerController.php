@@ -7,8 +7,6 @@ namespace App\Controller;
 use App\Entity\Member;
 use App\Entity\Person;
 use App\Form\BezoekerFormType;
-use App\Repository\MemberRepository;
-use App\Repository\PersonRepository;
 use App\Repository\TrainingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BezoekerController extends AbstractController
 {
     /**
-     * @Route("/",name="bezoeker_home")
+     * @Route("/", name="bezoeker_home")
      */
     public function homepage()
     {

@@ -1,0 +1,35 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block main %}
+    <div class="container mb-5">
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Beschrijving</th>
+                    <th scope="col">tijd</th>
+                    <th scope="col">Kosten</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for training in trainingen %}
+                        <tr>
+                            <td><img src="{{ asset("img/#{training.naam}.png") }}" alt="{{ training.naam }}" class="card-image d-none d-xl-block d-lg-block"></td>
+                            <td>{{training.naam}}</td>
+                            <td>{{training.description}}</td>
+                            <td>{{training.duration|date("g:i")}}</td>
+                            <td>{{training.costs}}</td>
+                            <td><a href="{{ path('admin_trainingen') }}" class="btn btn-primary">Wijzigen</a></td>
+                            <td><a href="{{ path('admin_trainingen_delete',{id:training.id}) }}" class="btn btn-danger">verwijderen</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('admin_trainingen') }}" class="btn btn-success">Toevoegen</a>
+        </div>
+    </div>
+{% endblock %}
