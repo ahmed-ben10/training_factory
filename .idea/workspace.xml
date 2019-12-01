@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin_home.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin_leden.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin_trainingen.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/admin_trainingen_create.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Person.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191128084120.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191128084327.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191128195800.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/bezoeker_regels.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/bezoeker_regels.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/bezoeker_registreren.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/bezoeker_registreren.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/home_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/bezoeker_base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/trainings_aanbod.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/trainings_aanbod.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin_trainingen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_trainingen.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,6 +129,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ahmed\Documents\training_factory\templates\admin" />
       <recent name="C:\Users\Ahmed\Documents\training_factory\templates\bezoeker" />
     </key>
   </component>
@@ -177,6 +164,7 @@
       <workItem from="1574927564202" duration="9530000" />
       <workItem from="1574939858685" duration="7390000" />
       <workItem from="1574965773766" duration="8808000" />
+      <workItem from="1575112547246" duration="1181000" />
     </task>
     <servers />
   </component>
@@ -195,16 +183,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/templates/bezoeker/bezoeker_registreren.html.twig</url>
-          <line>2</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -55,4 +55,13 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_trainingen');
 
     }
+
+    /**
+     * @Route("/admin/trainingen/create", name="admin_trainingen_create")
+     */
+    public function trainingenCreate(EntityManagerInterface $em)
+    {
+        return $this->render('admin/admin_trainingen_create.html.twig',['page_name'=>'admin_trainingen']);
+
+    }
 }
