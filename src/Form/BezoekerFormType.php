@@ -18,13 +18,13 @@ class BezoekerFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
-            ->add('voornaam',TextType::class,[ 'label'=>'Voornaam*','attr'=>['class'=>'form-control col-lg-10']])
-            ->add('tussenvoegsel',TextType::class,['label'=>'Tussenvoegsel','attr'=>['class'=>'form-control col-lg-10'], 'required'=>false])
-            ->add('achternaam',TextType::class,['label'=>'Achternaam*','attr'=>['class'=>'form-control col-lg-10']])
-            ->add('geboortedatum',BirthdayType::class,['label'=>'Geboortedatum*','attr'=>['class'=>'form-control col-lg-10']])
-            ->add('gebruikersnaam',TextType::class,['label'=>'Gebruikersnaam*','attr'=>['class'=>'form-control col-lg-5']])
-            ->add('wachtwoord',TextType::class,['label'=>'Wachtwoord*','attr'=>['class'=>'form-control col-lg-5']])
-            ->add('herhaling_wachtwoord',TextType::class,['label'=>'Herhaling wachtwoord*','attr'=>['class'=>'form-control col-lg-5']])
+            ->add('firstname',TextType::class,[ 'label'=>'Voornaam*'])
+            ->add('preprovision',TextType::class,['label'=>'Tussenvoegsel'])
+            ->add('lastname',TextType::class,['label'=>'Achternaam*'])
+            ->add('dateofbirth',BirthdayType::class,['label'=>'Geboortedatum*'])
+            ->add('loginname',TextType::class,['label'=>'Gebruikersnaam*'])
+            ->add('password',TextType::class,['label'=>'Wachtwoord*'])
+            ->add('password',TextType::class,['label'=>'Herhaling wachtwoord*'])
             ->add('gender',ChoiceType::class, [
                 'label'=>'Man/Vrouw',
                 'choices' => [
@@ -34,18 +34,18 @@ class BezoekerFormType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
             ])
-            ->add('straat',TextType::class,['label'=>'Straat*','attr'=>['class'=>'form-control col-lg-10']])
-            ->add('postcode',TextType::class,['label'=>'Postcode*','attr'=>['class'=>'form-control col-lg-2']])
-            ->add('stad',TextType::class,['label'=>'Stad*:','attr'=>['class'=>'form-control col-lg-10']])
-            ->add('email',TextType::class,['label'=>'Email*:','attr'=>['class'=>'form-control col-lg-10']])
+//            ->add('street',TextType::class,['label'=>'Straat*'])
+//            ->add('postal_code',TextType::class,['label'=>'Postcode*'])
+//            ->add('city',TextType::class,['label'=>'Stad*:'])
+            ->add('emailaddress',TextType::class,['label'=>'Email*:'])
 
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-//        $resolver->setDefaults([
-//            'data_class'=>Person::class
-//        ]);
+        $resolver->setDefaults([
+            'data_class'=>Person::class
+        ]);
     }
 }

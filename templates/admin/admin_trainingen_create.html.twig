@@ -1,5 +1,16 @@
-{% extends 'admin/admin/admin_base.html.twig' %}
+{% extends 'admin/admin_base.html.twig' %}
 
 {% block main %}
-    <h1>aa</h1>
+    <div class=" mt-2 mb-5 w-75 container">
+        <p class="text-danger content-title">Nieuwe trainingen</p>
+        <hr class="border border-danger"/>
+        <p>
+            Voeg hieronder nieuwe trainingen toe.
+        </p>
+
+        {{ form_start(trainingForm,{'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_widget(trainingForm) }}
+            <button type="submit">Opslaan</button>
+        {{ form_end(trainingForm) }}
+    </div>
 {% endblock %}

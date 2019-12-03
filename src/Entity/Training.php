@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrainingRepository")
@@ -20,16 +21,19 @@ class Training
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
      */
     private $naam;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
      */
     private $description;
 
     /**
      * @ORM\Column(type="time")
+     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
      */
     private $duration;
 

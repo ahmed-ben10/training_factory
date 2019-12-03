@@ -43,18 +43,7 @@ class BezoekerController extends AbstractController
         $bezoekerForm->handleRequest($request);
         if($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()){
             $data = $bezoekerForm->getData();
-            $person = new Person();
-            $member = new Member();
-            $person->setLoginname($data['gebruikersnaam']);
-            $person->setPassword($data['wachtwoord']);
-            $person->setFirstname($data['voornaam']);
-            $person->setPreprovision($data['tussenvoegsel']);
-            $person->setLastname($data['achternaam']);
-            $person->setDateofbirth($data['geboortedatum']);
-            $person->setPersonType('Member');
-            $person->setGender($data['gender']);
-            $person->setEmailaddress($data['email']);
-            $em->persist($person);
+            $em->persist($data);
             $em->flush();
 
 
