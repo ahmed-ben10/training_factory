@@ -24,7 +24,7 @@ class AdminTrainingenFormType extends AbstractType  {
                 'label'=>'Tijd',
                 'widget'=>'choice'
             ])
-            ->add('image_dir',FileType::class,['label'=>'Kies een foto'])
+            ->add('image_dir',FileType::class,['label'=>'Kies een foto', 'mapped'=>false])
          ;
     }
 

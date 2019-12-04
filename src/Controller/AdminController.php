@@ -92,12 +92,18 @@ class AdminController extends AbstractController
         $trainingForm->handleRequest($request);
         if($trainingForm->isSubmitted() && $trainingForm->isValid()) {
             $img = $trainingForm['image_dir']->getData();
-            $img->move($this->getParameter('training_img'), $img->getClientOriginalName());
-            $data = $trainingForm->getData();
-            $data->setImageDir($img->getClientOriginalName());
+            $data= null;
+            if($img){
+                $img->move($this->getParameter('training_img'), $img->getClientOriginalName());
+                $data = $trainingForm->getData();
+                $data->setImageDir($img->getClientOriginalName());
+            } else{
+                $data = $trainingForm->getData();
+                $data->setImageDir($training->getImageDir());
+            }
             $em->persist($data);
             $em->flush();
-            $this->addFlash('success','Training toegevoegd!');
+            $this->addFlash('success','Training gewijzigdg!');
             return $this->redirectToRoute('admin_trainingen');
         }
         return $this->render('admin/admin_trainingen_create.html.twig',[
