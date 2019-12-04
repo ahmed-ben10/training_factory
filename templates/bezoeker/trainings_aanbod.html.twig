@@ -8,7 +8,7 @@
             {% for training in trainingen %}
                 <div class="col-sm-4">
                     <div class="card w-100" style="width: 18rem;">
-                        <img class="card-img-top card-image" src="{{ asset("img/#{training.naam}.png") }}" alt="Card image cap">
+                        <img class="card-img-top card-image" src="{{ asset("img/#{training.imageDir}") }}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-title">{{training.naam}}</p>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ training.id }}">
@@ -28,7 +28,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <img class="card-img-top card-image  mb-2" src="{{ asset("img/#{training.naam}.png") }}" alt="Card image cap">
+                                <img class="card-img-top card-image  mb-2" src="{{ asset("img/#{training.imageDir}") }}" alt="Card image cap">
                                 <p>{{ training.description }}</p>
                                 <hr/>
                                 {% if training.costs is defined %}

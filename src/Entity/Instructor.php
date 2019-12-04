@@ -31,7 +31,7 @@ class Instructor
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Person", inversedBy="instructors")
      */
-    private $per;
+    private $person;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Lesson", mappedBy="instructor")

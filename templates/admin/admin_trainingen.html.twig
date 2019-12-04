@@ -2,6 +2,11 @@
 
 {% block main %}
     <div class="container mb-5">
+        {% for msg in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ msg }}
+            </div>
+        {%  endfor %}
         <div class="table-responsive-sm">
             <table class="table">
                 <thead>
@@ -18,12 +23,13 @@
                 <tbody>
                     {% for training in trainingen %}
                         <tr>
-                            <td><img src="{{ asset("img/#{training.naam}.png") }}" alt="{{ training.naam }}" class="card-image d-none d-xl-block d-lg-block"></td>
+{#                            {{ training.imageDir }}#}
+                            <td><img src="{{ asset("img/uploads/trainingen/#{training.imageDir}") }}" alt="{{ training.naam }}" class="card-image d-none d-xl-block d-lg-block"></td>
                             <td>{{training.naam}}</td>
                             <td>{{training.description}}</td>
                             <td>{{training.duration|date("H:i")}}</td>
                             <td>&euro;{{training.costs}}</td>
-                            <td><a href="{{ path('admin_trainingen') }}" class="btn btn-primary">Wijzigen</a></td>
+                            <td><a href="{{ path('admin_trainingen_update',{id:training.id}) }}" class="btn btn-primary">Wijzigen</a></td>
                             <td><a href="{{ path('admin_trainingen_delete',{id:training.id}) }}" class="btn btn-danger">verwijderen</a></td>
                         </tr>
                     {% endfor %}

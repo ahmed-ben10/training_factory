@@ -68,7 +68,6 @@ class Person
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
      */
     private $person_type;
 

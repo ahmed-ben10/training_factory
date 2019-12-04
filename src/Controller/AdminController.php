@@ -8,6 +8,7 @@ use App\Form\AdminTrainingenFormType;
 use App\Repository\TrainingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -53,6 +54,7 @@ class AdminController extends AbstractController
         $training = $trainingRepository->find($id);
         $em->remove($training);
         $em->flush();
+        $this->addFlash('success','Trraining verwijderd!');
         return $this->redirectToRoute('admin_trainingen');
 
     }
@@ -63,10 +65,15 @@ class AdminController extends AbstractController
     public function trainingenCreate(EntityManagerInterface $em, Request $request){
         $trainingForm = $this->createForm(AdminTrainingenFormType::class);
         $trainingForm->handleRequest($request);
-        if($trainingForm->isSubmitted() && $trainingForm->isValid()){
-            $form = $trainingForm->getData();
-            $em->persist($form);
+        if($trainingForm->isSubmitted() && $trainingForm->isValid()) {
+            $img = $trainingForm['image_dir']->getData();
+            $img->move($this->getParameter('training_img'), $img->getClientOriginalName());
+
+            $data = $trainingForm->getData();
+            $data->setImageDir($img->getClientOriginalName());
+            $em->persist($data);
             $em->flush();
+            $this->addFlash('success','Training toegevoegd!');
             return $this->redirectToRoute('admin_trainingen');
         }
         return $this->render('admin/admin_trainingen_create.html.twig',[
@@ -75,4 +82,28 @@ class AdminController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/admin/trainingen/update/{id}", name="admin_trainingen_update")
+     */
+    public function trainingenUpdate(EntityManagerInterface $em, TrainingRepository $trainingRepository, Request $request, $id){
+        $training = $trainingRepository->find($id);
+        $trainingForm = $this->createForm(AdminTrainingenFormType::class, $training);
+        $trainingForm->handleRequest($request);
+        if($trainingForm->isSubmitted() && $trainingForm->isValid()) {
+            $img = $trainingForm['image_dir']->getData();
+            $img->move($this->getParameter('training_img'), $img->getClientOriginalName());
+            $data = $trainingForm->getData();
+            $data->setImageDir($img->getClientOriginalName());
+            $em->persist($data);
+            $em->flush();
+            $this->addFlash('success','Training toegevoegd!');
+            return $this->redirectToRoute('admin_trainingen');
+        }
+        return $this->render('admin/admin_trainingen_create.html.twig',[
+            'page_name'=>'admin_trainingen',
+            'trainingForm'=>$trainingForm->createView()
+        ]);
+    }
+
 }

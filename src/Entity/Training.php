@@ -21,19 +21,19 @@ class Training
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @Assert\NotBlank(message="Vul een naam in")
      */
     private $naam;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @Assert\NotBlank(message="Vul een beschrijving in")
      */
     private $description;
 
     /**
      * @ORM\Column(type="time")
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @Assert\NotBlank(message="Vul een tijd in")
      */
     private $duration;
 
@@ -46,6 +46,11 @@ class Training
      * @ORM\OneToMany(targetEntity="App\Entity\Lesson", mappedBy="training")
      */
     private $lessons;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $image_dir;
 
     public function __construct()
     {
@@ -132,6 +137,18 @@ class Training
                 $lesson->setTraining(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageDir(): ?string
+    {
+        return $this->image_dir;
+    }
+
+    public function setImageDir(string $image_dir): self
+    {
+        $this->image_dir = $image_dir;
 
         return $this;
     }
