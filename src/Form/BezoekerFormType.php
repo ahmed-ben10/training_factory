@@ -8,7 +8,9 @@ use App\Entity\Person;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,8 +25,12 @@ class BezoekerFormType extends AbstractType
             ->add('lastname',TextType::class,['label'=>'Achternaam*'])
             ->add('dateofbirth',BirthdayType::class,['label'=>'Geboortedatum*'])
             ->add('loginname',TextType::class,['label'=>'Gebruikersnaam*'])
-            ->add('password',TextType::class,['label'=>'Wachtwoord*'])
-            ->add('password',TextType::class,['label'=>'Herhaling wachtwoord*'])
+            ->add('password',RepeatedType::class,[
+                'type'=>PasswordType::class,
+                'invalid_message'=>'De wachtwoord velden moeten matchen',
+                'first_options'=> ['label' => 'Wachtwoord'],
+                'second_options'=> ['label' => 'Herhaling wachtwoord']
+            ])
             ->add('gender',ChoiceType::class, [
                 'label'=>'Man/Vrouw',
                 'choices' => [
