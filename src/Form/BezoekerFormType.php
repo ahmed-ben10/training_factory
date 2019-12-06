@@ -40,9 +40,9 @@ class BezoekerFormType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
             ])
-//            ->add('street',TextType::class,['label'=>'Straat*'])
-//            ->add('postal_code',TextType::class,['label'=>'Postcode*'])
-//            ->add('city',TextType::class,['label'=>'Stad*:'])
+            ->add('street',TextType::class,['label'=>'Straat*','mapped'=>false])
+            ->add('postal_code',TextType::class,['label'=>'Postcode*','mapped'=>false])
+            ->add('city',TextType::class,['label'=>'Stad*:','mapped'=>false])
             ->add('emailaddress',TextType::class,['label'=>'Email*:'])
 
         ;

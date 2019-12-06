@@ -41,18 +41,18 @@ class BezoekerController extends AbstractController
 
         $bezoekerForm =  $this->createForm(BezoekerFormType::class);
         $bezoekerForm->handleRequest($request);
-        if($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()){
+        if( $bezoekerForm->isSubmitted() && $bezoekerForm->isValid() ){
             $data = $bezoekerForm->getData();
+            $member = new Member();
+            $member->setStreet($bezoekerForm['street']->getData());
+            $member->setPostalCode($bezoekerForm['postal_code']->getData());
+            $member->setPlace($bezoekerForm['city']->getData());
+            $member->setPerson($data);
+            $data->setRoles(['ROLE_USER']);
             $em->persist($data);
-            $em->flush();
-
-
-            $member->setStreet($data['straat']);
-            $member->setPostalCode($data['stad']);
-            $member->setPlace($data['email']);
-            $member->setPerson($person);
             $em->persist($member);
             $em->flush();
+
             return $this->redirectToRoute('bezoeker_home');
 
 

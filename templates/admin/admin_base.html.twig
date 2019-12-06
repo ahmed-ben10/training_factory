@@ -7,11 +7,13 @@
                     <img class="w-50" src="{{ asset('img/logo.png') }}" alt="Logo">
                 </div>
                 <div class="col-lg-3 d-flex">
-                    <form action="" method="post" class="ml-auto mb-2 ">
-                        <p class="text-danger pb-0 mb-0">Welkom A. Benhajar</p>
-                        <p class="text-danger mb-2 pb-0 mb-0">-Administratie-</p>
-                        <button type="submit" class="btn btn-danger text-white">Uitloggen</button>
-                    </form>
+                    {% if app.user %}
+                        <div class="ml-auto mb-2">
+                            <p class="text-danger mb-2 pb-0 mb-0">Welkom {{ app.user.username }}</p>
+                            <p class="text-danger mb-2 pb-0 mb-0">-Administratie-</p>
+                            <button type="submit" class="btn btn-danger "><a href="{{ path('app_logout') }}" class="text-white">Uitloggen</a></button>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <hr class="bg-danger m-0">
