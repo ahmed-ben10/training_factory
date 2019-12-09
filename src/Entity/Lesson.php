@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LessonRepository")
@@ -20,26 +21,31 @@ class Lesson
 
     /**
      * @ORM\Column(type="time")
+     * @Assert\NotBlank(message="Vul een tijd in")
      */
     private $time;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="Vul een datum in")
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Kies een lokaal uit")
      */
     private $location;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer"
+     * @Assert\NotBlank(message="Vul een getal in")
      */
     private $max_persons;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Training", inversedBy="lessons")
+     * @Assert\NotBlank(message="Kies een trainingsvorm uit")
      */
     private $training;
 

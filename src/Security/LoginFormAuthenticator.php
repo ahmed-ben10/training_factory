@@ -73,12 +73,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        if($user->getPassword() === $credentials['password']){
+        if($credentials['password'] === $user->getPassword()){
             return true;
         }
-        // Check the user's password or other credentials and return true or false
-        // If there are no credentials to check, you can just return true
-//        throw new MyCustomAuthenticationException('The credentials are wrong!');
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
@@ -86,9 +83,22 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-        return new RedirectResponse('/admin');
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+
+        $user = $this->entityManager->getRepository(Person::class)->findOneBy(['emailaddress' => $request->request->get('emailaddress')]);
+       $rolen = [
+         'admin'=>"ROLE_ADMIN",
+         'instructeur'=>"ROLE_INSTRUCTEUR"
+       ];
+
+        if($user->getRoles()[0] ==  $rolen['admin']){
+            return new RedirectResponse('/admin');
+        } else if($user->getRoles()[0] ==  $rolen['instructeur']){
+            return new RedirectResponse('/instructeur');
+        } else{
+            throw new CustomUserMessageAuthenticationException('Sorry, er is iets misgegaan neem contact op met onze klanteservive.');
+        }
+
+
     }
 
     protected function getLoginUrl()

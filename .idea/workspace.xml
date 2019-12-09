@@ -2,14 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/InstructeurController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/LessenFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_home.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_plannen.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/training-factory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/training-factory.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Person.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191204181803.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Lesson.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Lesson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/bezoeker_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/bezoeker_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,6 +136,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
     </include_path>
   </component>
   <component name="ProjectId" id="1TxkmVfH2oBWNYScvmm8nwmkRGl" />
@@ -179,6 +192,7 @@
       <workItem from="1575479951289" duration="1203000" />
       <workItem from="1575482463546" duration="1598000" />
       <workItem from="1575537394997" duration="15625000" />
+      <workItem from="1575903385519" duration="13762000" />
     </task>
     <servers />
   </component>

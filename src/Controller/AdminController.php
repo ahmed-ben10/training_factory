@@ -103,7 +103,7 @@ class AdminController extends AbstractController
             }
             $em->persist($data);
             $em->flush();
-            $this->addFlash('success','Training gewijzigdg!');
+            $this->addFlash('success','Training gewijzigdg0!');
             return $this->redirectToRoute('admin_trainingen');
         }
         return $this->render('admin/admin_trainingen_create.html.twig',[

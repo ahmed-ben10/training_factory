@@ -12,11 +12,12 @@ security:
             security: false
         main:
             anonymous: true
+
+            logout:
+                path: app_logout
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
-            logout:
-                path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -30,4 +31,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/instructeur, roles: ROLE_INSTRUCTEUR }
