@@ -72,14 +72,14 @@ class Instructor
         return $this;
     }
 
-    public function getRelation(): ?Person
+    public function getPerson(): ?Person
     {
-        return $this->relation;
+        return $this->person;
     }
 
-    public function setRelation(?Person $relation): self
+    public function setPerson(?Person $person): self
     {
-        $this->relation = $relation;
+        $this->person = $person;
 
         return $this;
     }

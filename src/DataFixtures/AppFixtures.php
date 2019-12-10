@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Instructor;
 use App\Entity\Person;
+use App\Entity\Training;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -29,7 +31,7 @@ class AppFixtures extends Fixture
         }
         for ($i = 0; $i<10; $i++){
             $personInstructeur = new Person();
-
+            $instructeur = new Instructor();
             $personInstructeur
                 ->setEmailaddress('in' .$i . '@hotmail.com')
                 ->setLoginname('in' . $i)
@@ -40,10 +42,28 @@ class AppFixtures extends Fixture
                 ->setRoles(['ROLE_INSTRUCTEUR'])
                 ->setDateofbirth(new \DateTime())
             ;
+            $instructeur
+                ->setPerson($personInstructeur)
+                ->setHiringDate(new \DateTime())
+                ->setSalary(100.22*$i);
             $manager->persist($personInstructeur);
+            $manager->persist($instructeur);
             $manager->flush();
 
         }
 
+        for ($i = 0; $i<10; $i++){
+            $training = new Training();
+            $training
+                ->setNaam('Training'. $i)
+                ->setDescription(''. $i)
+                ->setCosts(1.3*$i)
+                ->setDuration(new \DateTime())
+                ->setImageDir('MMA.png')
+             ;
+
+            $manager->persist($training);
+            $manager->flush();
+        }
     }
 }

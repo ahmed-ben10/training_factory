@@ -24,11 +24,13 @@
                     <img class="w-50" src="{{ asset('img/logo.png') }}" alt="Logo">
                 </div>
                 <div class="col-lg-3 d-flex mb-3">
-                    <form action="" method="post" class="m-auto w-100 mb-2">
-                        <p class="text-danger pb-0 mb-0">Welkom A. Benhajar</p>
-                        <p class="text-danger mb-2 pb-0 mb-0">-Administratie-</p>
-                        <button type="submit" class="btn btn-danger text-white w-100">Uitloggen</button>
-                    </form>
+                    {% if app.user %}
+                        <div class=" w-100 mb-2">
+                            <p class="text-center text-danger mb-2 pb-0 mb-0">Welkom {{ app.user.username }}</p>
+                            <p class="text-center text-danger mb-2 pb-0 mb-0">-Instructeur-</p>
+                            <a href="{{ path('app_logout') }}" class="text-white w-100"><button type="submit" class="btn btn-danger w-100">Uitloggen</button></a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <hr class="bg-danger m-0">

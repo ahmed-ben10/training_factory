@@ -2,6 +2,11 @@
 
 {% block main %}
     <div class="container">
+        {% for msg in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ msg }}
+            </div>
+        {%  endfor %}
         <b class="text-danger">Lessen beheer</b>
         <hr class="border border-danger"/>
         <div class="table-responsive-sm">
@@ -15,6 +20,7 @@
                     <th scope="col">Aantal ingeshcreven deelnemers</th>
                     <th scope="col">Deelnemerlijst</th>
                     <th scope="col">Aanpassen</th>
+                    <th scope="col">Verwijderen</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,7 +32,8 @@
                         <td>{{ les.training.naam }}</td>
                         <td>{{ les.maxPersons }}</td>
                         <td><a href=""  class="btn btn-primary">Lijst</a></td>
-                        <td><a href=""  class="btn btn-primary">Bewerken</a></td>
+                        <td><a href="{{ path('instructeur_lessen_update',{id:les.id}) }}"  class="btn btn-primary">Bewerken</a></td>
+                        <td><a href="{{ path('instructeur_lessen_delete',{id:les.id}) }}"  class="btn btn-danger">Verwijder</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

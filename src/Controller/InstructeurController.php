@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Form\LessenFormType;
+use App\Repository\InstructorRepository;
 use App\Repository\LessonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,11 +28,12 @@ class InstructeurController extends AbstractController
      * @Route("/instructeur/lessen/plannen",name="instructeur_lessen_plannen")
      */
 
-    public function instructeurLessenPlannen(Request $request, EntityManagerInterface $em) {
+    public function instructeurLessenPlannen(Request $request, EntityManagerInterface $em, InstructorRepository $instructorRepository) {
         $lessenForm=$this->createForm(LessenFormType::class);
         $lessenForm->handleRequest($request);
         if($lessenForm->isSubmitted() && $lessenForm->isValid()){
             $data = $lessenForm->getData();
+            $data->setInstructor($instructorRepository->findOneBy(['person'=>$this->getUser()]));
             $em->persist($data);
             $em->flush();
             $this->addFlash('success','Nieuwe les gemaakt!');
@@ -62,6 +64,18 @@ class InstructeurController extends AbstractController
             'page_name'=>'instructeur_lessen_update',
             'lessonForm'=>$lessenForm->createView()
         ]);
+    }
+
+    /**
+     * @Route("/instructeur/lessen/delete/{id}",name="instructeur_lessen_delete")
+     */
+
+    public function instructeurLesDelete(LessonRepository $lessonRepository, EntityManagerInterface $em, $id){
+        $les = $lessonRepository->find($id);
+        $em->remove($les);
+        $em->flush();
+        $this->addFlash('success','De les is succesvol verwijderd!');
+        return $this->redirectToRoute('instructeur_lessen_beheer');
     }
 
     /**
