@@ -38,7 +38,7 @@ class Lesson
     private $location;
 
     /**
-     * @ORM\Column(type="integer"
+     * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Vul een getal in")
      */
     private $max_persons;

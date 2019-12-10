@@ -89,7 +89,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
          'admin'=>"ROLE_ADMIN",
          'instructeur'=>"ROLE_INSTRUCTEUR"
        ];
-
         if($user->getRoles()[0] ==  $rolen['admin']){
             return new RedirectResponse('/admin');
         } else if($user->getRoles()[0] ==  $rolen['instructeur']){

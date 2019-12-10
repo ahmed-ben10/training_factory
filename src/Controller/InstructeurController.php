@@ -44,6 +44,27 @@ class InstructeurController extends AbstractController
     }
 
     /**
+     * @Route("/instructeur/lessen/update/{id}",name="instructeur_lessen_update")
+     */
+
+    public function instructeurLessenUpdate(Request $request, EntityManagerInterface $em, LessonRepository $lessonRepository, $id ) {
+        $lessen =  $lessonRepository->find($id);
+        $lessenForm=$this->createForm(LessenFormType::class,$lessen);
+        $lessenForm->handleRequest($request);
+        if($lessenForm->isSubmitted() && $lessenForm->isValid()){
+            $data = $lessenForm->getData();
+            $em->persist($data);
+            $em->flush();
+            $this->addFlash('success','Nieuwe les gemaakt!');
+            return $this->redirectToRoute('instructeur_lessen_beheer');
+        }
+        return $this->render('instructeur/instructeur_lessen_update.html.twig',[
+            'page_name'=>'instructeur_lessen_update',
+            'lessonForm'=>$lessenForm->createView()
+        ]);
+    }
+
+    /**
      * @Route("/instructeur/lessen/beheer",name="instructeur_lessen_beheer")
      */
 

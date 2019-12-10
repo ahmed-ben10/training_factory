@@ -1,0 +1,17 @@
+{% extends 'instructeur/instructeur_base.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <b class="text-danger">Les wijzigen</b>
+        <hr class="border border-danger"/>
+        <p class="mb-3">
+            De les die je wilt verzorgen moet je met het
+            onderstaande formulier zelf plannen. Lokaal
+            wordt allen getoond als er ruimte is.
+        </p>
+        {{ form_start(lessonForm,{'novalidate':'novalidate','class':'mb-5'}) }}
+        {{ form_widget(lessonForm) }}
+        <button type="submit" class="btn btn-primary mb-5">Maak les</button>
+        {{ form_end(lessonForm) }}
+    </div>
+{% endblock %}

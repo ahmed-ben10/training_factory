@@ -11,7 +11,7 @@
                         <div class="ml-auto mb-2">
                             <p class="text-danger mb-2 pb-0 mb-0">Welkom {{ app.user.username }}</p>
                             <p class="text-danger mb-2 pb-0 mb-0">-Instructeur-</p>
-                            <button type="submit" class="btn btn-danger "><a href="{{ path('app_logout') }}" class="text-white">Uitloggen</a></button>
+                            <a href="{{ path('app_logout') }}" class="text-white"><button type="submit" class="btn btn-danger ">Uitloggen</button></a>
                         </div>
                     {% endif %}
                 </div>

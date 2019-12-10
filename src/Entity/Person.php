@@ -21,20 +21,20 @@ class Person implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Vul een loginnaam in")
      */
     private $loginname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @Assert\NotBlank(message="Vul een wachtwoord in")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @Assert\NotBlank(message="Vul een voornaam in")
      */
     private $firstname;
 
@@ -45,13 +45,13 @@ class Person implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @Assert\NotBlank(message="Vul een achternaam in")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @Assert\NotBlank(message="Vul een geboortedatum in")
      */
     private $dateofbirth;
 
@@ -62,8 +62,9 @@ class Person implements UserInterface
     private $gender;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Dit veld mag niet leeg blijven")
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Vul een email in")
+     * @Assert\Email(message="Vul een geldige email in")
      */
     private $emailaddress;
 
@@ -274,8 +275,8 @@ class Person implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // guarantee every user at least has ROLE_MEMBER
+        $roles[] = 'ROLE_MEMBER';
 
         return array_unique($roles);
     }
