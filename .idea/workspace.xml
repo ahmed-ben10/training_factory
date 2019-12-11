@@ -2,18 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191211132619.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191211132806.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191211133024.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191211133637.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191211133941.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191211134026.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/leden/leden_base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/leden/leden_gegevens.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/leden/leden_home.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/leden/leden_inschrijven_overzicht.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InstructeurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstructeurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Instructor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Instructor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191210103434.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191210104608.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191210104647.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191210105035.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191210112527.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/instructeur/instructeur_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191210200304.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20191211113611.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/AccessDeniedHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +142,11 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1TxkmVfH2oBWNYScvmm8nwmkRGl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -147,6 +159,11 @@
       <recent name="C:\Users\ahmed\Documents\training_factory\templates\admin" />
       <recent name="C:\Users\Ahmed\Documents\training_factory\templates\bezoeker" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="pornhub" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -188,6 +205,7 @@
       <workItem from="1575903385519" duration="13762000" />
       <workItem from="1575968630761" duration="7265000" />
       <workItem from="1576003289339" duration="7739000" />
+      <workItem from="1576062646407" duration="10175000" />
     </task>
     <servers />
   </component>
@@ -206,5 +224,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

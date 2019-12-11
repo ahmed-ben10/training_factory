@@ -1,5 +1,9 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\Person:
+            algorithm: auto
+            cost: 12
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
@@ -12,7 +16,6 @@ security:
             security: false
         main:
             anonymous: true
-            access_denied_handler: App\Security\AccessDeniedHandler
             logout:
                 path: app_logout
             guard:
@@ -32,3 +35,4 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/instructeur, roles: ROLE_INSTRUCTEUR }
+         - { path: ^/leden, roles: ROLE_MEMBER }

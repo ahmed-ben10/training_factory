@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class BezoekerController extends AbstractController
 {
@@ -25,50 +26,57 @@ class BezoekerController extends AbstractController
     }
 
     /**
-     * @Route("/bezoeker_trainings_aanbod",name="bezoeker_trainings_aanbod")
+     * @Route("/trainingsaanbod",name="bezoeker_trainings_aanbod")
      */
     public function trainingsAanbod(TrainingRepository $trainingen)
     {
-        return $this->render('bezoeker/trainings_aanbod.html.twig', ['page_name' => 'bezoeker_trainings_aanbod', 'trainingen'=>$trainingen->findAll()]);
+        return $this->render('bezoeker/trainings_aanbod.html.twig', ['page_name' => 'bezoeker_trainings_aanbod', 'trainingen' => $trainingen->findAll()]);
 
     }
 
     /**
      * @Route("/registreren",name="bezoeker_registreren")
      */
-    public function registreren(EntityManagerInterface $em, Request $request)
+    public function registreren(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder)
     {
-
-        $bezoekerForm =  $this->createForm(BezoekerFormType::class);
+        $person = new Person();
+        $bezoekerForm = $this->createForm(BezoekerFormType::class, $person);
         $bezoekerForm->handleRequest($request);
-        if( $bezoekerForm->isSubmitted() && $bezoekerForm->isValid() ){
+        if ($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()) {
             $data = $bezoekerForm->getData();
+            $pass = $data->getPassword();
+//            dd($data);
+            $encoded = $encoder->encodePassword($person, $person->getPassword());
+            $data->setPassword($encoded);
             $member = new Member();
-            $member->setStreet($bezoekerForm['street']->getData());
-            $member->setPostalCode($bezoekerForm['postal_code']->getData());
-            $member->setPlace($bezoekerForm['city']->getData());
-            $member->setPerson($data);
-            $data->setRoles(['ROLE_USER']);
+            $member
+                ->setStreet($bezoekerForm['street']->getData())
+                ->setPostalCode($bezoekerForm['postal_code']->getData())
+                ->setPlace($bezoekerForm['city']->getData())
+                ->setPerson($data)
+            ;
+            $data->setRoles(['ROLE_MEMBER']);
             $em->persist($data);
             $em->persist($member);
             $em->flush();
 
             return $this->redirectToRoute('bezoeker_home');
-
+            
 
         }
-        return $this->render('bezoeker/bezoeker_registreren.html.twig', ['page_name' => 'bezoeker_registreren', 'bezoekerForm'=>$bezoekerForm->createView()]);
+        return $this->render('bezoeker/bezoeker_registreren.html.twig', ['page_name' => 'bezoeker_registreren', 'bezoekerForm' => $bezoekerForm->createView()]);
     }
 
     /**
-     * @Route("/gedrags_regels",name="bezoeker_regels")
+     * @Route("/regels",name="bezoeker_regels")
      */
-    public function gedragsRegels(){
+    public function gedragsRegels()
+    {
         return $this->render('bezoeker/bezoeker_regels.html.twig', ['page_name' => 'bezoeker_regels']);
     }
 
     /**
-     * @Route("/bezoeker_contact",name="bezoeker_contact")
+     * @Route("/contact",name="bezoeker_contact")
      */
     public function contact()
     {

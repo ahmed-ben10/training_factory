@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
@@ -25,12 +26,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     private $entityManager;
     private $urlGenerator;
     private $csrfTokenManager;
+    private $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $encoder)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
+        $this->passwordEncoder = $encoder;
+
     }
 
     public function supports(Request $request)
@@ -73,9 +77,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        if($credentials['password'] === $user->getPassword()){
-            return true;
-        }
+      return $this->passwordEncoder->isPasswordValid($user,$credentials['password']);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
@@ -87,14 +89,34 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $user = $this->entityManager->getRepository(Person::class)->findOneBy(['emailaddress' => $request->request->get('emailaddress')]);
        $rolen = [
          'admin'=>"ROLE_ADMIN",
-         'instructeur'=>"ROLE_INSTRUCTEUR"
+         'instructeur'=>"ROLE_INSTRUCTEUR",
+         'leden'=>"ROLE_MEMBER"
        ];
-        if($user->getRoles()[0] ==  $rolen['admin']){
-            return new RedirectResponse('/admin');
-        } else if($user->getRoles()[0] ==  $rolen['instructeur']){
-            return new RedirectResponse('/instructeur');
-        } else{
-            throw new CustomUserMessageAuthenticationException('Sorry, er is iets misgegaan neem contact op met onze klanteservive.');
+//        if($user->getRoles()[0] ==  $rolen['admin']){
+//            return new RedirectResponse('/admin');
+//        } else if($user->getRoles()[0] ==  $rolen['instructeur']){
+//            return new RedirectResponse('/instructeur');
+//        } else if($user->getRoles()[0] ==  $rolen['leden']){
+//            return new RedirectResponse('/leden');
+//        }
+//        else{
+//            throw new CustomUserMessageAuthenticationException('Sorry, er is iets misgegaan neem contact op met onze klanteservive.');
+//        }
+
+        switch ($user->getRoles()[0]){
+            case $rolen['admin']:
+                return new RedirectResponse('/admin');
+                break;
+            case $rolen['instructeur']:
+                return new RedirectResponse('/instructeur');
+                break;
+            case $rolen['leden']:
+                return new RedirectResponse('/leden');
+                break;
+            default:
+                throw new CustomUserMessageAuthenticationException('Sorry, er is iets misgegaan neem contact op met onze klanteservive.');
+                break;
+
         }
 
 

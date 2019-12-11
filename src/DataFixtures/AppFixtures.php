@@ -3,28 +3,36 @@
 namespace App\DataFixtures;
 
 use App\Entity\Instructor;
+use App\Entity\Member;
 use App\Entity\Person;
 use App\Entity\Training;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->passwordEncoder = $encoder;
+    }
+
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i<10; $i++){
             $personAdmin = new Person();
-
             $personAdmin
                 ->setEmailaddress('test' .$i . '@hotmail.com')
                 ->setLoginname('test' . $i)
-                ->setPassword('test' . $i)
+                ->setPassword($this->passwordEncoder->encodePassword($personAdmin,'test' . $i))
                 ->setFirstname('naam' . $i)
                 ->setLastname('achternaam'. $i)
                 ->setGender('Man')
                 ->setRoles(['ROLE_ADMIN'])
                 ->setDateofbirth(new \DateTime())
-              ;
+            ;
             $manager->persist($personAdmin);
             $manager->flush();
 
@@ -35,7 +43,7 @@ class AppFixtures extends Fixture
             $personInstructeur
                 ->setEmailaddress('in' .$i . '@hotmail.com')
                 ->setLoginname('in' . $i)
-                ->setPassword('in' . $i)
+                ->setPassword($this->passwordEncoder->encodePassword($personInstructeur,'test' . $i))
                 ->setFirstname('naam' . $i)
                 ->setLastname('achternaam'. $i)
                 ->setGender('Vrouw')
@@ -51,7 +59,30 @@ class AppFixtures extends Fixture
             $manager->flush();
 
         }
+        for ($i = 0; $i<10; $i++){
+            $personMember = new Person();
+            $member = new Member();
+            $personMember
+                ->setEmailaddress('me' .$i . '@hotmail.com')
+                ->setLoginname('me' . $i)
+                ->setPassword($this->passwordEncoder->encodePassword($personMember,'me' . $i))
+                ->setFirstname('naam' . $i)
+                ->setLastname('achternaam'. $i)
+                ->setGender('Man')
+                ->setRoles(['ROLE_MEMBER'])
+                ->setDateofbirth(new \DateTime())
+            ;
+            $member
+                ->setPerson($personMember)
+                ->setPlace('Den Haag')
+                ->setPostalCode('2593HD')
+                ->setStreet('Pijnacker hordijckstraat 14')
+            ;
+            $manager->persist($personMember);
+            $manager->persist($member);
+            $manager->flush();
 
+        }
         for ($i = 0; $i<10; $i++){
             $training = new Training();
             $training
@@ -60,7 +91,7 @@ class AppFixtures extends Fixture
                 ->setCosts(1.3*$i)
                 ->setDuration(new \DateTime())
                 ->setImageDir('MMA.png')
-             ;
+            ;
 
             $manager->persist($training);
             $manager->flush();
