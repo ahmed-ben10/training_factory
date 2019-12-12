@@ -43,7 +43,7 @@ class AppFixtures extends Fixture
             $personInstructeur
                 ->setEmailaddress('in' .$i . '@hotmail.com')
                 ->setLoginname('in' . $i)
-                ->setPassword($this->passwordEncoder->encodePassword($personInstructeur,'test' . $i))
+                ->setPassword($this->passwordEncoder->encodePassword($personInstructeur,'in' . $i))
                 ->setFirstname('naam' . $i)
                 ->setLastname('achternaam'. $i)
                 ->setGender('Vrouw')
