@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191211203728.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20191212091326.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LedenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191212091326.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20191212150145.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/leden/leden_inschrijven_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_inschrijven_overzicht.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -191,6 +193,7 @@
       <workItem from="1576062646407" duration="10175000" />
       <workItem from="1576096595644" duration="611000" />
       <workItem from="1576097357676" duration="1905000" />
+      <workItem from="1576150607958" duration="6080000" />
     </task>
     <servers />
   </component>

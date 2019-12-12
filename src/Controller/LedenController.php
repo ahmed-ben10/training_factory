@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Member;
 use App\Entity\Person;
 use App\Form\BezoekerFormType;
+use App\Repository\LessonRepository;
 use App\Repository\MemberRepository;
 use App\Repository\PersonRepository;
+use App\Repository\RegistrationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,10 +30,13 @@ class LedenController extends AbstractController
     /**
      * @Route("/leden/lessen", name="leden_inschrijven_overzicht")
      */
-        public function ledenInschrijvingOverzicht()
+        public function ledenInschrijvingOverzicht(RegistrationRepository $registrationRepository, MemberRepository $memberRepository, LessonRepository $lessonRepository)
         {
+            $member = $memberRepository->findOneBy(['person'=>$this->getUser()]);
+            $registrations = $registrationRepository->findBy(['member'=>$member]);
             return $this->render('leden/leden_inschrijven_overzicht.html.twig', [
                 'page_name' => 'leden_inschrijven_overzicht',
+                'myLessons'=>  $registrations
             ]);
         }
 
@@ -61,7 +66,9 @@ class LedenController extends AbstractController
             $bezoekerForm->handleRequest($request);
             if ($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()) {
                 $data = $bezoekerForm->getData();
-//            dd($data);
+                /**
+                 * TODO: FIX THE NOT VALIDATING WHILE UPDATING BUG
+                 */
                 $encoded = $encoder->encodePassword($person, $person->getPassword());
                 $data->setPassword($encoded);
                 $member

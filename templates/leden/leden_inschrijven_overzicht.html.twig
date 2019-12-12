@@ -1,5 +1,43 @@
 {% extends 'leden/leden_base.html.twig' %}
 
 {% block main %}
-
+    <div class="container">
+        {% for msg in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ msg }}
+            </div>
+        {%  endfor %}
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Tijd</th>
+                    <th scope="col">Lokaal</th>
+                    <th scope="col">Sport</th>
+                    <th scope="col">Aantal ingeshcreven deelnemers</th>
+                    <th scope="col">Deelnemerlijst</th>
+                    <th scope="col">Uitschrijven</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{ dump() }}
+                {% for les in myLessons %}
+                    <tr>
+                        <td>{{ les.lesson.date|date("m-d-Y") }}</td>
+                        <td>{{ les.lesson.time|date("H:i") }}</td>
+                        <td>{{ les.lesson.location }}</td>
+                        <td>{{ les.lesson.training.naam }}</td>
+                        <td>{{ les.lesson.maxPersons }}</td>
+                        <td><a href=""  class="btn btn-primary">Lijst</a></td>
+                        <td><a href="{{ path('leden_home',{id:les.lesson.id}) }}"  class="btn btn-primary">Bewerken</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
+
+
+
