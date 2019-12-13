@@ -30,7 +30,7 @@
                         <td>{{ les.lesson.training.naam }}</td>
                         <td>{{ les.lesson.maxPersons }}</td>
                         <td><a href=""  class="btn btn-primary">Lijst</a></td>
-                        <td><a href="{{ path('leden_home',{id:les.lesson.id}) }}"  class="btn btn-primary">Bewerken</a></td>
+                        <td><a href="{{ path('leden_lessen_uitschrijven',{id:les.lesson.id}) }}"  class="btn btn-primary">Uitschrijven</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

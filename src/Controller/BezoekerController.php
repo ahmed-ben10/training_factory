@@ -46,7 +46,8 @@ class BezoekerController extends AbstractController
             $data = $bezoekerForm->getData();
             $pass = $data->getPassword();
 //            dd($data);
-            $encoded = $encoder->encodePassword($person, $person->getPassword());
+           //$encoded = $encoder->encodePassword($person, $person->getPassword());
+            $encoded = $encoder->encodePassword($person, $bezoekerForm['password']->getData());
             $data->setPassword($encoded);
             $member = new Member();
             $member

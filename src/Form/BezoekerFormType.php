@@ -15,17 +15,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Validator\Constraints as Assert;
 class BezoekerFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
-            ->add('firstname',TextType::class,[ 'label'=>'Voornaam*'])
-            ->add('preprovision',TextType::class,['label'=>'Tussenvoegsel'])
-            ->add('lastname',TextType::class,['label'=>'Achternaam*'])
-            ->add('dateofbirth',BirthdayType::class,['label'=>'Geboortedatum*'])
-            ->add('loginname',TextType::class,['label'=>'Gebruikersnaam*'])
+            ->add('firstname',TextType::class,[ 'label'=>'Voornaam*','empty_data'=>''])
+            ->add('preprovision',TextType::class,['label'=>'Tussenvoegsel','empty_data'=>''])
+            ->add('lastname',TextType::class,['label'=>'Achternaam*','empty_data'=>''])
+            ->add('dateofbirth',BirthdayType::class,['label'=>'Geboortedatum*','empty_data'=>''])
+            ->add('loginname',TextType::class,['label'=>'Gebruikersnaam*','empty_data'=>''])
             ->add('password',RepeatedType::class,[
+                'empty_data'=>'',
+                'mapped'=>false,
                 'type'=>PasswordType::class,
                 'invalid_message'=>'De wachtwoord velden moeten matchen',
                 'first_options'=> ['label' => 'Wachtwoord'],
@@ -38,11 +40,18 @@ class BezoekerFormType extends AbstractType
                     'Vrouw'=>'Vrouw'
                 ],
                 'expanded' => true,
+                'empty_data'=>'',
                 'multiple' => false,
             ])
-            ->add('street',TextType::class,['label'=>'Straat*','mapped'=>false])
-            ->add('postal_code',TextType::class,['label'=>'Postcode*','mapped'=>false])
-            ->add('city',TextType::class,['label'=>'Stad*:','mapped'=>false])
+            ->add('street',TextType::class,['label'=>'Straat*','mapped'=>false, 'constraints' => [
+                new Assert\NotBlank(['message' => "Vul een straat in"])
+            ]])
+            ->add('postal_code',TextType::class,['label'=>'Postcode*','mapped'=>false, 'constraints' => [
+                new Assert\NotBlank(['message' => "Vul een postcode in"])
+            ]])
+            ->add('city',TextType::class,['label'=>'Stad*:','mapped'=>false, 'constraints' => [
+                new Assert\NotBlank(['message' => "Vul een stad in"])
+            ]])
             ->add('emailaddress',TextType::class,['label'=>'Email*:'])
 
         ;

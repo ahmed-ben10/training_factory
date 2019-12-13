@@ -69,7 +69,7 @@ class Person implements UserInterface
     private $emailaddress;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Instructor", mappedBy="relation")
+     * @ORM\OneToMany(targetEntity="App\Entity\Instructor", mappedBy="person")
      */
     private $instructors;
 

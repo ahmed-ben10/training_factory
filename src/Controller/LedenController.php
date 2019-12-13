@@ -32,12 +32,23 @@ class LedenController extends AbstractController
      */
         public function ledenInschrijvingOverzicht(RegistrationRepository $registrationRepository, MemberRepository $memberRepository, LessonRepository $lessonRepository)
         {
-            $member = $memberRepository->findOneBy(['person'=>$this->getUser()]);
+            $member = $memberRepository->findBy(['person'=>$this->getUser()]);
             $registrations = $registrationRepository->findBy(['member'=>$member]);
             return $this->render('leden/leden_inschrijven_overzicht.html.twig', [
                 'page_name' => 'leden_inschrijven_overzicht',
                 'myLessons'=>  $registrations
             ]);
+        }
+
+        /**
+         * @Route("/leden/lessen/uitschrijven/{id}", name="leden_lessen_uitschrijven")
+         */
+        public function ledenUitschrijven(EntityManagerInterface $em,RegistrationRepository $registrationRepository, MemberRepository $memberRepository, LessonRepository $lessonRepository, $id)
+        {
+            $registrations = $registrationRepository->find($id);
+            $em->remove($registrations);
+            $em->flush();
+            return $this->redirectToRoute('leden_inschrijven_overzicht');
         }
 
 
@@ -56,16 +67,26 @@ class LedenController extends AbstractController
      */
         public function ledenGegevens(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder, PersonRepository $personRepository, MemberRepository $memberRepository)
         {
-            $user = $this->getUser();
-            $person = $personRepository->find($user->getId());
+            $person = $this->getUser();
+
+
             $bezoekerForm = $this->createForm(BezoekerFormType::class, $person);
+
             $member = $memberRepository->findOneBy([ 'person'=>$person]);
+
             $bezoekerForm['street']->setData($member->getStreet());
             $bezoekerForm['postal_code']->setData($member->getPostalCode());
             $bezoekerForm['city']->setData($member->getPlace());
+            if($bezoekerForm->isSubmitted())
+            {
+                dd($request);
+            }
             $bezoekerForm->handleRequest($request);
+
+
             if ($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()) {
                 $data = $bezoekerForm->getData();
+
                 /**
                  * TODO: FIX THE NOT VALIDATING WHILE UPDATING BUG
                  */
