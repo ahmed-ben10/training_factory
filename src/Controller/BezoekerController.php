@@ -44,10 +44,7 @@ class BezoekerController extends AbstractController
         $bezoekerForm->handleRequest($request);
         if ($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()) {
             $data = $bezoekerForm->getData();
-            $pass = $data->getPassword();
-//            dd($data);
-           //$encoded = $encoder->encodePassword($person, $person->getPassword());
-            $encoded = $encoder->encodePassword($person, $bezoekerForm['password']->getData());
+            $encoded = $encoder->encodePassword($person, $person->getPassword());
             $data->setPassword($encoded);
             $member = new Member();
             $member
@@ -61,7 +58,7 @@ class BezoekerController extends AbstractController
             $em->persist($member);
             $em->flush();
 
-            return $this->redirectToRoute('bezoeker_home');
+            return $this->redirectToRoute('leden_lessen_inschrijvingen');
             
 
         }

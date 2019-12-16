@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Member;
 use App\Entity\Person;
+use App\Entity\Registration;
 use App\Form\BezoekerFormType;
 use App\Repository\LessonRepository;
 use App\Repository\MemberRepository;
@@ -36,7 +37,8 @@ class LedenController extends AbstractController
             $registrations = $registrationRepository->findBy(['member'=>$member]);
             return $this->render('leden/leden_inschrijven_overzicht.html.twig', [
                 'page_name' => 'leden_inschrijven_overzicht',
-                'myLessons'=>  $registrations
+                'myLessons'=>  $registrations,
+                'registrations'=>$registrationRepository
             ]);
         }
 
@@ -53,14 +55,35 @@ class LedenController extends AbstractController
 
 
     /**
-     * @Route("/leden/lessen/inschrijven", name="leden_lessen_inschrijven")
+     * @Route("/leden/lessen/inschrijvingen ", name="leden_lessen_inschrijvingen")
      */
-        public function ledenLessenInschrijven()
+        public function ledenLesseninschrijvingen(LessonRepository $lessonRepository)
         {
+
             return $this->render('leden/leden_lessen_inschrijven.html.twig', [
                 'page_name' => 'leden_lessen_inschrijven',
+                'lessen'=>$lessonRepository->findAll()
             ]);
         }
+
+
+    /**
+     * @Route("/leden/lessen/inschrijven/{id}", name="leden_lessen_inschrijven")
+     */
+    public function ledenLessenInschrijven(LessonRepository $lessonRepository,MemberRepository $memberRepository, EntityManagerInterface $em, $id)
+    {
+        $registration = new Registration();
+        $registration
+            ->setLesson($lessonRepository->find($id))
+            ->setMember($memberRepository->findOneBy(['person'=>$this->getUser()]))
+        ;
+        $em->persist($registration);
+        $em->flush();
+        return $this->render('leden/leden_lessen_inschrijven.html.twig', [
+            'page_name' => 'leden_lessen_inschrijven',
+            'lessen'=>$lessonRepository->findAll()
+        ]);
+    }
 
     /**
      * @Route("/leden/gegevens", name="leden_gegevens")

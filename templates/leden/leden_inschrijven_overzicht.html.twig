@@ -16,7 +16,7 @@
                     <th scope="col">Lokaal</th>
                     <th scope="col">Sport</th>
                     <th scope="col">Aantal ingeshcreven deelnemers</th>
-                    <th scope="col">Deelnemerlijst</th>
+                    <th scope="col">Prijs</th>
                     <th scope="col">Uitschrijven</th>
                 </tr>
                 </thead>
@@ -28,8 +28,8 @@
                         <td>{{ les.lesson.time|date("H:i") }}</td>
                         <td>{{ les.lesson.location }}</td>
                         <td>{{ les.lesson.training.naam }}</td>
-                        <td>{{ les.lesson.maxPersons }}</td>
-                        <td><a href=""  class="btn btn-primary">Lijst</a></td>
+                        <td>{{ registrations.memberCount(les.lesson)|length }}</td>
+                        <td>&euro;{{ les.lesson.training.costs }}</td>
                         <td><a href="{{ path('leden_lessen_uitschrijven',{id:les.lesson.id}) }}"  class="btn btn-primary">Uitschrijven</a></td>
                     </tr>
                 {% endfor %}

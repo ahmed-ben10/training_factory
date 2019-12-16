@@ -27,7 +27,6 @@ class BezoekerFormType extends AbstractType
             ->add('loginname',TextType::class,['label'=>'Gebruikersnaam*','empty_data'=>''])
             ->add('password',RepeatedType::class,[
                 'empty_data'=>'',
-                'mapped'=>false,
                 'type'=>PasswordType::class,
                 'invalid_message'=>'De wachtwoord velden moeten matchen',
                 'first_options'=> ['label' => 'Wachtwoord'],

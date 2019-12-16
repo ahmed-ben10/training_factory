@@ -2,7 +2,18 @@
 
 {% block main %}
     <div class="container">
-
+        {% for les in lessen %}
+            <div class="row mb-5" >
+                <div class="col-sm-3">
+                    <img src="{{ asset("img/#{les.training.imageDir }") }}" class="card-image" alt="">
+                </div>
+                <div class="col-sm-9">
+                    <h5 class="card-title">{{ les.training.naam }}</h5>
+                    <p>{{ les.time|date("H:i") }}</p>
+                    <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
 

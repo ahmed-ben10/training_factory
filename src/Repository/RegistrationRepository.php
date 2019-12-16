@@ -19,10 +19,16 @@ class RegistrationRepository extends ServiceEntityRepository
         parent::__construct($registry, Registration::class);
     }
 
+    public function getMemberCount($val){
+       $em = $this->getEntityManager();
+       $query =$em->createQuery("SELECT registration FROM App:Registration registration WHERE registration.lesson = :id");
+       $query->execute(['id'=>$val]);
+       return $query->getResult();
+    }
     // /**
     //  * @return Registration[] Returns an array of Registration objects
     //  */
-    /*
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('r')
@@ -34,7 +40,6 @@ class RegistrationRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Registration
