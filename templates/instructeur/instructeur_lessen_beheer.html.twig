@@ -30,8 +30,8 @@
                         <td>{{ les.time|date("H:i") }}</td>
                         <td>{{ les.location }}</td>
                         <td>{{ les.training.naam }}</td>
-                        <td>{{ les.maxPersons }}</td>
-                        <td><a href=""  class="btn btn-primary">Lijst</a></td>
+                        <td>{{ registrations.memberCount(les)|length }}</td>
+                        <td><a href="{{ path('instructeur_lessen_beheer_deelnemerlijst',{id:les.id}) }}"  class="btn btn-primary">Lijst</a></td>
                         <td><a href="{{ path('instructeur_lessen_update',{id:les.id}) }}"  class="btn btn-primary">Bewerken</a></td>
                         <td><a href="{{ path('instructeur_lessen_delete',{id:les.id}) }}"  class="btn btn-danger">Verwijder</a></td>
                     </tr>

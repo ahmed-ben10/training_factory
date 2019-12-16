@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Form\LessenFormType;
 use App\Repository\InstructorRepository;
 use App\Repository\LessonRepository;
+use App\Repository\RegistrationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -82,11 +83,26 @@ class InstructeurController extends AbstractController
      * @Route("/instructeur/lessen/beheer",name="instructeur_lessen_beheer")
      */
 
-    public function instructeurLessenBeheer(LessonRepository $lessonRepository) {
+    public function instructeurLessenBeheer(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository) {
         $lessen = $lessonRepository->findAll();
         return $this->render('instructeur/instructeur_lessen_beheer.html.twig',[
             'page_name'=>'instructeur_lessen_beheer',
-            'lessen'=>$lessen
+            'lessen'=>$lessen,
+            'registrations'=>$registrationRepository
         ]);
     }
+
+    /**
+     * @Route("/instructeur/lessen/beheer/deelnemerlijst/{id}",name="instructeur_lessen_beheer_deelnemerlijst")
+     */
+
+    public function instructeurLessenDeelnemerlijst(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository, $id) {
+        $lessen = $lessonRepository->find($id);
+        $members = $registrationRepository->getMemberCount($lessen);
+        return $this->render('instructeur/instructeur_lessen_beheer_deelnemerlijst.html.twig',[
+            'page_name'=>'instructeur_lessen_beheer',
+            'registrations'=>$members
+        ]);
+    }
+
 }

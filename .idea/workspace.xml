@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191216130744.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer_deelnemerlijst.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/InstructeurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstructeurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LedenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191213105714.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191216130744.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20191216184449.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/RegistrationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RegistrationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden_gegevens.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_gegevens.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/leden/leden_inschrijven_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_inschrijven_overzicht.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" afterDir="false" />
     </list>
@@ -201,6 +198,7 @@
       <workItem from="1576096595644" duration="611000" />
       <workItem from="1576097357676" duration="1905000" />
       <workItem from="1576150607958" duration="6080000" />
+      <workItem from="1576521647151" duration="4079000" />
     </task>
     <servers />
   </component>
@@ -222,5 +220,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer_deelnemerlijst.html.twig</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

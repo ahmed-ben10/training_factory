@@ -57,12 +57,13 @@ class LedenController extends AbstractController
     /**
      * @Route("/leden/lessen/inschrijvingen ", name="leden_lessen_inschrijvingen")
      */
-        public function ledenLesseninschrijvingen(LessonRepository $lessonRepository)
+        public function ledenLesseninschrijvingen(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository)
         {
 
             return $this->render('leden/leden_lessen_inschrijven.html.twig', [
                 'page_name' => 'leden_lessen_inschrijven',
-                'lessen'=>$lessonRepository->findAll()
+                'lessen'=>$lessonRepository->findAll(),
+                'registrations'=>$registrationRepository
             ]);
         }
 
@@ -79,10 +80,7 @@ class LedenController extends AbstractController
         ;
         $em->persist($registration);
         $em->flush();
-        return $this->render('leden/leden_lessen_inschrijven.html.twig', [
-            'page_name' => 'leden_lessen_inschrijven',
-            'lessen'=>$lessonRepository->findAll()
-        ]);
+        return $this->redirectToRoute('leden_inschrijven_overzicht');
     }
 
     /**

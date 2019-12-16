@@ -1,0 +1,31 @@
+{% extends 'instructeur/instructeur_base.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        {% if registrations %}
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Voornaam</th>
+                    <th scope="col">Tussenvoegsel</th>
+                    <th scope="col">Achternaam</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for members in registrations %}
+                    <tr>
+                        {{ dump(members) }}
+                        <td>{{ members.member.person.firstname }}</td>
+                        <td>{{ members.member.person.preprovision }}</td>
+                        <td>{{ members.member.person.lastname }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <h5 class="content-title">Deze les heeft 0 deelnemers</h5>
+        {% endif %}
+    </div>
+{% endblock %}

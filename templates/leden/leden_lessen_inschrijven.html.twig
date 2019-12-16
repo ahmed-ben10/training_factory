@@ -10,7 +10,12 @@
                 <div class="col-sm-9">
                     <h5 class="card-title">{{ les.training.naam }}</h5>
                     <p>{{ les.time|date("H:i") }}</p>
+                    {%  if les.maxPersons > registrations.memberCount(les)|length %}
                     <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
+                    {% else %}
+                        <p class="content-title">Excuses, de les is al vol.</p>
+                        <p class="content-title">Probeer een andere les.</p>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
