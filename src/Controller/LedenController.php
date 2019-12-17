@@ -63,7 +63,7 @@ class LedenController extends AbstractController
             return $this->render('leden/leden_lessen_inschrijven.html.twig', [
                 'page_name' => 'leden_lessen_inschrijven',
                 'lessen'=>$lessonRepository->findAll(),
-                'registrations'=>$registrationRepository
+                'registrations'=>$registrationRepository,
             ]);
         }
 
@@ -106,11 +106,7 @@ class LedenController extends AbstractController
 
 
             if ($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()) {
-                $data = $bezoekerForm->getData();
-
-                /**
-                 * TODO: FIX THE NOT VALIDATING WHILE UPDATING BUG
-                 */
+                $data = $bezoekerForm->getData(); ;
                 $encoded = $encoder->encodePassword($person, $person->getPassword());
                 $data->setPassword($encoded);
                 $member
