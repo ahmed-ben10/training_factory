@@ -11,6 +11,7 @@ use App\Repository\MemberRepository;
 use App\Repository\PersonRepository;
 use App\Repository\RegistrationRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Expr\Cast\Object_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -62,11 +63,30 @@ class LedenController extends AbstractController
 
             return $this->render('leden/leden_lessen_inschrijven.html.twig', [
                 'page_name' => 'leden_lessen_inschrijven',
-                'lessen'=>$lessonRepository->findAll(),
+                'lessen'=>$lessonRepository->find(),
                 'registrations'=>$registrationRepository,
             ]);
         }
 
+    /**
+     * @Route("/leden/lessen/inschrijvingen/date/{date} ", name="leden_lessen_inschrijven_datum")
+     */
+    public function ledenLesseninschrijvingenDatum(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository,$date)
+    {
+        $lessen = null;
+        if($date == 'later'){
+//            $days = new \DatePeriod(new \DateTime(),new \DateInterval('P1D'),new \DateTime('2013-02-01'));
+//            foreach ($day in $days){
+//                $lessen = $lessonRepository->findBy(['date'=> $day]);
+        } else {
+            $lessen = $lessonRepository->findBy(['date'=> new \DateTime($date)]);
+        }
+        return $this->render('leden/leden_lessen_inschrijven.html.twig', [
+            'page_name' => 'leden_lessen_inschrijven',
+            'lessen'=>$lessen,
+            'registrations'=>$registrationRepository,
+        ]);
+    }
 
     /**
      * @Route("/leden/lessen/inschrijven/{id}", name="leden_lessen_inschrijven")

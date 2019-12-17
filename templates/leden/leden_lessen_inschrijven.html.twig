@@ -2,20 +2,29 @@
 
 {% block main %}
     <div class="container">
-        <div class="row">
-            {% for i in 0..14 %}
-                    <div class="col-lg-1">
-                        <button class="btn" >{{ date('now')|date_modify("+#{i} day")|date("m/d/Y") }}</a>
-                    </div>
+        <div class="row mb-4 w-100 bg-secondary p-1" role="button" aria-label="First group">
+            <div class="col-sm-2">
+                <a href="{{ path('leden_lessen_inschrijven_datum',{date:date('now')|date("y-m-d")}) }}" type="button" class="content-title btn btn-secondary p-0 ">Vandaag</a>
+            </div>
+            {% for i in 1..13 %}
+            <div class="col-sm-2">
+                 <a href="{{ path('leden_lessen_inschrijven_datum',{date:date('now')|date_modify("+#{i} day")|date("y-m-d")}) }}" type="button" class="content-title p-0 btn btn-secondary ">{{ date('now')|date_modify("+#{i} day")|date("D d M") }}</a>
+            </div>
             {% endfor %}
+            <div class="col-sm-2">
+                <a href="{{ path('leden_lessen_inschrijven_datum',{date:'later'}) }}" type="button" class="content-title btn btn-secondary p-0">Later</a>
+            </div>
         </div>
+        {% if lessen is empty %}
+            <p>Helaas zijn er nog geen lessen ingepland op deze datum.</p>
+        {% endif %}
         {% for les in lessen %}
             <div class="row mb-5" >
                 <div class="col-sm-3">
                     <img src="{{ asset("img/#{les.training.imageDir }") }}" class="card-image" alt="">
                 </div>
                 <div class="col-sm-9">
-                    <h5 class="card-title">{{ les.training.naam }}</h5>
+                    <h5 class="card-title">{{ les.training.naam }}, {{ les.id }}</h5>
                     <p>{{ les.time|date("H:i") }}</p>
                     {% if les.maxPersons > registrations.memberCount(les)|length %}
                     <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
