@@ -4,6 +4,8 @@
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LedenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191216184449.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20191218102030.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/LessonRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LessonRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -195,6 +197,8 @@
       <workItem from="1576521647151" duration="4079000" />
       <workItem from="1576569102071" duration="4835000" />
       <workItem from="1576608878541" duration="6202000" />
+      <workItem from="1576654570737" duration="4072000" />
+      <workItem from="1576664140741" duration="7871000" />
     </task>
     <servers />
   </component>

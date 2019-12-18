@@ -2,39 +2,53 @@
 
 {% block main %}
     <div class="container">
-        <div class="row mb-4 w-100 bg-secondary p-1" role="button" aria-label="First group">
-            <div class="col-sm-2">
-                <a href="{{ path('leden_lessen_inschrijven_datum',{date:date('now')|date("y-m-d")}) }}" type="button" class="content-title btn btn-secondary p-0 ">Vandaag</a>
-            </div>
+        <div class="row mb-5" style="background-color: #f2f0f0">
+            <a class="text-dark p-2 {{ (date("now").format('Y-m-d') == date) ?' badge-pill badge-warning':'' }}" href="{{ path('leden_lessen_inschrijven_datum', {date : date("now")|date("Y-m-d")}) }}">VANDAAG</a>
             {% for i in 1..13 %}
-            <div class="col-sm-2">
-                 <a href="{{ path('leden_lessen_inschrijven_datum',{date:date('now')|date_modify("+#{i} day")|date("y-m-d")}) }}" type="button" class="content-title p-0 btn btn-secondary ">{{ date('now')|date_modify("+#{i} day")|date("D d M") }}</a>
-            </div>
+                <a class=" text-dark p-2 {{ (date("now")|date_modify("+#{i} day")|date("Y-m-d") == date)?' badge-pill badge-warning':'' }}" href="{{ path('leden_lessen_inschrijven_datum', {date:date("now")|date_modify("+#{i} day")|date("Y-m-d")}) }}">{{ date("now")|date_modify("+#{i} day")|date("D d M") }}</a>
             {% endfor %}
-            <div class="col-sm-2">
-                <a href="{{ path('leden_lessen_inschrijven_datum',{date:'later'}) }}" type="button" class="content-title btn btn-secondary p-0">Later</a>
-            </div>
+            <a class="text-dark p-2 {{ (later)?'badge-pill badge-warning':'' }}" href="{{ path('leden_lessen_inschrijven_datum_later') }}">LATER</a>
         </div>
-        {% if lessen is empty %}
-            <p>Helaas zijn er nog geen lessen ingepland op deze datum.</p>
+        {% if later %}
+            {% for les in lessenRepo.getLaterDate(date("now")|date_modify("+13 day")) %}
+                <div class="row mb-5" >
+                    <div class="col-sm-3">
+                        <img src="{{ asset("img/#{les.training.imageDir }") }}" class="card-image" alt="">
+                    </div>
+                    <div class="col-sm-9">
+                        <h5 class="card-title">{{ les.training.naam }}, {{ les.id }}</h5>
+                        <p>{{ les.time|date("H:i") }}</p>
+                        {% if les.maxPersons > registrations.memberCount(les)|length %}
+                            <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
+                        {% else %}
+                            <p class="content-title">Excuses, de les is al vol.</p>
+                            <p class="content-title">Probeer een andere les.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            {% if lessen is empty %}
+                <p>Helaas zijn er geen lessen ingepland op deze datum.</p>
+            {% endif %}
+            {% for les in lessen %}
+                <div class="row mb-5" >
+                    <div class="col-sm-3">
+                        <img src="{{ asset("img/#{les.training.imageDir }") }}" class="card-image" alt="">
+                    </div>
+                    <div class="col-sm-9">
+                        <h5 class="card-title">{{ les.training.naam }}, {{ les.id }}</h5>
+                        <p>{{ les.time|date("H:i") }}</p>
+                        {% if les.maxPersons > registrations.memberCount(les)|length %}
+                            <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
+                        {% else %}
+                            <p class="content-title">Excuses, de les is al vol.</p>
+                            <p class="content-title">Probeer een andere les.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
         {% endif %}
-        {% for les in lessen %}
-            <div class="row mb-5" >
-                <div class="col-sm-3">
-                    <img src="{{ asset("img/#{les.training.imageDir }") }}" class="card-image" alt="">
-                </div>
-                <div class="col-sm-9">
-                    <h5 class="card-title">{{ les.training.naam }}, {{ les.id }}</h5>
-                    <p>{{ les.time|date("H:i") }}</p>
-                    {% if les.maxPersons > registrations.memberCount(les)|length %}
-                    <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
-                    {% else %}
-                        <p class="content-title">Excuses, de les is al vol.</p>
-                        <p class="content-title">Probeer een andere les.</p>
-                    {% endif %}
-                </div>
-            </div>
-        {% endfor %}
     </div>
 {% endblock %}
 

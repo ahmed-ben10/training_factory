@@ -10,6 +10,7 @@ use App\Repository\LessonRepository;
 use App\Repository\MemberRepository;
 use App\Repository\PersonRepository;
 use App\Repository\RegistrationRepository;
+use Cassandra\Date;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpParser\Node\Expr\Cast\Object_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -60,11 +61,15 @@ class LedenController extends AbstractController
      */
         public function ledenLesseninschrijvingen(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository)
         {
+            $dateTime = new \DateTime('now');
 
             return $this->render('leden/leden_lessen_inschrijven.html.twig', [
                 'page_name' => 'leden_lessen_inschrijven',
-                'lessen'=>$lessonRepository->find(),
-                'registrations'=>$registrationRepository,
+                'lessen'=>$lessonRepository->findBy(['date'=> new \DateTime(date('Y-m-d'))]),
+                'lessenRepo'=>$lessonRepository,
+                'registrations' => $registrationRepository,
+                'date' =>  $dateTime->format('Y-m-d'),
+                'later' => false
             ]);
         }
 
@@ -73,20 +78,32 @@ class LedenController extends AbstractController
      */
     public function ledenLesseninschrijvingenDatum(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository,$date)
     {
-        $lessen = null;
-        if($date == 'later'){
-//            $days = new \DatePeriod(new \DateTime(),new \DateInterval('P1D'),new \DateTime('2013-02-01'));
-//            foreach ($day in $days){
-//                $lessen = $lessonRepository->findBy(['date'=> $day]);
-        } else {
-            $lessen = $lessonRepository->findBy(['date'=> new \DateTime($date)]);
-        }
         return $this->render('leden/leden_lessen_inschrijven.html.twig', [
             'page_name' => 'leden_lessen_inschrijven',
-            'lessen'=>$lessen,
-            'registrations'=>$registrationRepository,
+            'registrations' => $registrationRepository,
+            'lessen' => $lessonRepository->findBy(['date' => new \DateTime($date)]),
+            'lessenRepo' => $lessonRepository,
+            'date' => $date,
+            'later' => false
         ]);
     }
+
+    /**
+     * @Route("/leden/lessen/inschrijvingen/later ", name="leden_lessen_inschrijven_datum_later")
+     */
+    public function ledenLesseninschrijvingenLater(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository)
+    {
+        $lessen = null;
+        return $this->render('leden/leden_lessen_inschrijven.html.twig', [
+            'page_name' => 'leden_lessen_inschrijven',
+            'lessen'=>$lessonRepository->findBy(['date' => new \DateTime('now')]),
+            'registrations'=>$registrationRepository,
+            'lessenRepo'=>$lessonRepository,
+            'date' => null,
+            'later' => true
+        ]);
+    }
+
 
     /**
      * @Route("/leden/lessen/inschrijven/{id}", name="leden_lessen_inschrijven")
