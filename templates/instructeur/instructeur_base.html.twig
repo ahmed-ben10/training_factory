@@ -55,6 +55,10 @@
                         <a class="nav-link nav-line text-danger {{ (page_name == 'instructeur_lessen_beheer')?'active':'' }} "
                            href={{ path('instructeur_lessen_beheer') }}>Lessen beheer</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-line text-danger {{ (page_name == 'instructeur_profiel_wijzigen')?'active':'' }} "
+                           href={{ path('instructeur_profiel_wijzigen') }}>Profiel wijzigen</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -81,6 +85,7 @@
             </div>
         </div>
     </div>
+    {{ dump() }}
     {% endblock %}
     {% block main %}{% endblock %}
     {% block footer %}

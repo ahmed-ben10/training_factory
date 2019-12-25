@@ -6,6 +6,7 @@ use App\Entity\Member;
 use App\Entity\Person;
 use App\Entity\Registration;
 use App\Form\BezoekerFormType;
+use App\Form\BezoekerWIjzigFormType;
 use App\Repository\LessonRepository;
 use App\Repository\MemberRepository;
 use App\Repository\PersonRepository;
@@ -59,7 +60,7 @@ class LedenController extends AbstractController
     /**
      * @Route("/leden/lessen/inschrijvingen ", name="leden_lessen_inschrijvingen")
      */
-        public function ledenLesseninschrijvingen(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository)
+        public function ledenLesseninschrijvingen(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository, MemberRepository $memberRepository)
         {
             $dateTime = new \DateTime('now');
 
@@ -69,14 +70,15 @@ class LedenController extends AbstractController
                 'lessenRepo'=>$lessonRepository,
                 'registrations' => $registrationRepository,
                 'date' =>  $dateTime->format('Y-m-d'),
-                'later' => false
+                'later' => false,
+                'member'=>$memberRepository->findOneBy([ 'person'=>$this->getUser()])
             ]);
         }
 
     /**
      * @Route("/leden/lessen/inschrijvingen/date/{date} ", name="leden_lessen_inschrijven_datum")
      */
-    public function ledenLesseninschrijvingenDatum(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository,$date)
+    public function ledenLesseninschrijvingenDatum(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository,MemberRepository $memberRepository,$date)
     {
         return $this->render('leden/leden_lessen_inschrijven.html.twig', [
             'page_name' => 'leden_lessen_inschrijven',
@@ -84,14 +86,15 @@ class LedenController extends AbstractController
             'lessen' => $lessonRepository->findBy(['date' => new \DateTime($date)]),
             'lessenRepo' => $lessonRepository,
             'date' => $date,
-            'later' => false
+            'later' => false,
+            'member'=>$memberRepository->findOneBy([ 'person'=>$this->getUser()])
         ]);
     }
 
     /**
      * @Route("/leden/lessen/inschrijvingen/later ", name="leden_lessen_inschrijven_datum_later")
      */
-    public function ledenLesseninschrijvingenLater(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository)
+    public function ledenLesseninschrijvingenLater(LessonRepository $lessonRepository, RegistrationRepository $registrationRepository, MemberRepository $memberRepository)
     {
         $lessen = null;
         return $this->render('leden/leden_lessen_inschrijven.html.twig', [
@@ -100,7 +103,8 @@ class LedenController extends AbstractController
             'registrations'=>$registrationRepository,
             'lessenRepo'=>$lessonRepository,
             'date' => null,
-            'later' => true
+            'later' => true,
+            'member'=>$memberRepository->findOneBy([ 'person'=>$this->getUser()])
         ]);
     }
 
@@ -128,7 +132,7 @@ class LedenController extends AbstractController
             $person = $this->getUser();
 
 
-            $bezoekerForm = $this->createForm(BezoekerFormType::class, $person);
+            $bezoekerForm = $this->createForm(BezoekerWIjzigFormType::class, $person);
 
             $member = $memberRepository->findOneBy([ 'person'=>$person]);
 
@@ -144,8 +148,6 @@ class LedenController extends AbstractController
 
             if ($bezoekerForm->isSubmitted() && $bezoekerForm->isValid()) {
                 $data = $bezoekerForm->getData(); ;
-                $encoded = $encoder->encodePassword($person, $person->getPassword());
-                $data->setPassword($encoded);
                 $member
                     ->setStreet($bezoekerForm['street']->getData())
                     ->setPostalCode($bezoekerForm['postal_code']->getData())

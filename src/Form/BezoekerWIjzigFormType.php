@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form;
 
 
@@ -16,22 +15,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
-class BezoekerFormType extends AbstractType
+
+class BezoekerWIjzigFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options){
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
             ->add('firstname',TextType::class,[ 'label'=>'Voornaam*','empty_data'=>'','required'=>false])
             ->add('preprovision',TextType::class,['label'=>'Tussenvoegsel'])
             ->add('lastname',TextType::class,['label'=>'Achternaam*','empty_data'=>'','required'=>false])
-            ->add('dateofbirth',BirthdayType::class,['label'=>'Geboortedatum*'])
+            ->add('dateofbirth',BirthdayType::class,['label'=>'Geboortedatum*','empty_data'=>'','required'=>false])
             ->add('loginname',TextType::class,['label'=>'Gebruikersnaam*','empty_data'=>'','required'=>false])
-            ->add('password',RepeatedType::class,[
-                'empty_data'=>'',
-                'type'=>PasswordType::class,
-                'invalid_message'=>'De wachtwoord velden moeten matchen',
-                'first_options'=> ['label' => 'Wachtwoord'],
-                'second_options'=> ['label' => 'Herhaling wachtwoord']
-            ])
             ->add('gender',ChoiceType::class, [
                 'label'=>'Man/Vrouw',
                 'choices' => [
@@ -58,7 +52,7 @@ class BezoekerFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class'=>Person::class
+            'data_class' => Person::class
         ]);
     }
 }

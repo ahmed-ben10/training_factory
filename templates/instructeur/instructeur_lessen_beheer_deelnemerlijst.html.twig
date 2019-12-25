@@ -3,23 +3,29 @@
 {% block main %}
     <div class="container">
         {% if registrations %}
-        <div class="table-responsive-sm">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Voornaam</th>
-                    <th scope="col">Tussenvoegsel</th>
-                    <th scope="col">Achternaam</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for members in registrations %}
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead>
                     <tr>
-                        {{ dump(members) }}
-                        <td>{{ members.member.person.firstname }}</td>
-                        <td>{{ members.member.person.preprovision }}</td>
-                        <td>{{ members.member.person.lastname }}</td>
+                        <th scope="col">Voornaam</th>
+                        <th scope="col">Tussenvoegsel</th>
+                        <th scope="col">Achternaam</th>
+                        <th scope="col">Betaling</th>
                     </tr>
+                    </thead>
+                    <tbody>
+                    {% for member in regMembers %}
+                        <tr>
+                            {{ dump(member) }}
+                            <td>{{ member.member.person.firstname }}</td>
+                            <td>{{ member.member.person.preprovision }}</td>
+                            <td>{{ member.member.person.lastname }}</td>
+                            {% if  member.payment == 1  %}
+                                <td><a href="{{ path('instructeur_lessen_beheer_deelnemerlijst_deelnemer',{id:member.lesson.id,memId:member.member.id}) }}"><i class="fas fa-check"></i></a></td>
+                            {% else %}
+                                <td><a href="{{ path('instructeur_lessen_beheer_deelnemerlijst_deelnemer',{id:member.lesson.id, memId:member.member.id}) }}"><i class="fas fa-times"></i></a></td>
+                            {% endif %}
+                        </tr>
                 {% endfor %}
                 </tbody>
             </table>

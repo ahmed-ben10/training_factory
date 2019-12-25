@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Form/BezoekerWIjzigFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/InstructorWijzigFormType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/InstructeurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstructeurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LedenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191216184449.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20191218102030.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LessonRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LessonRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/RegistrationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RegistrationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instructeur/instructeur_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer_deelnemerlijst.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer_deelnemerlijst.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/leden/leden_gegevens.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_gegevens.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -199,6 +205,9 @@
       <workItem from="1576608878541" duration="6202000" />
       <workItem from="1576654570737" duration="4072000" />
       <workItem from="1576664140741" duration="7871000" />
+      <workItem from="1576685491254" duration="5116000" />
+      <workItem from="1576848981129" duration="4324000" />
+      <workItem from="1577207167960" duration="9727000" />
     </task>
     <servers />
   </component>
@@ -228,6 +237,11 @@
           <url>file://$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer_deelnemerlijst.html.twig</url>
           <line>5</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig</url>
+          <line>13</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
