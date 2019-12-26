@@ -1,5 +1,30 @@
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block main %}
-
+    <div class="container">
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Voornaam</th>
+                    <th scope="col">Tussenvoegsel</th>
+                    <th scope="col">Achternaam</th>
+                    <th scope="col">Lessen overzicht</th>
+                    <th scope="col">Actief</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for lid in leden %}
+                        <tr>
+                            <td>{{ lid.person.firstname }}</td>
+                            <td>{{ lid.person.preprovision }}</td>
+                            <td>{{ lid.person.lastname }}</td>
+                            <td><a href="{{ path('admin_leden_lessen',{lid:lid.id}) }}">Lessen</a></td>
+                            <td> !ACTIEF!</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Form\AdminTrainingenFormType;
+use App\Repository\MemberRepository;
 use App\Repository\TrainingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,10 +34,25 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/leden", name="admin_leden")
      */
-    public function leden()
+    public function leden(MemberRepository $memberRepository)
     {
-        return $this->render('admin/admin_leden.html.twig', ['page_name' => 'admin_leden']);
+        return $this->render('admin/admin_leden.html.twig', [
+            'page_name' => 'admin_leden',
+            'leden'=> $memberRepository->findAll()
+        ]);
     }
+
+    /**
+     * @Route("/admin/leden/lessen/{lid}", name="admin_leden_lessen")
+     */
+    public function ledenLessen(MemberRepository $memberRepository,$lid)
+    {
+        return $this->render('admin/admin_leden_lessen.html.twig', [
+            'page_name' => 'admin_leden',
+            'lid'=> $memberRepository->find($lid)
+        ]);
+    }
+
 
     /**
      * @Route("/admin/trainingen", name="admin_trainingen")

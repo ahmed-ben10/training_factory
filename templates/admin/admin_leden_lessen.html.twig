@@ -1,0 +1,31 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block main %}
+    <div class="container mb-5">
+        <p class="content-title text-danger"></p>
+        {% if lid.person.gender == 'Man' %}
+            <b class="text-danger">Lessen van de heer {{ lid.person.preprovision }} {{ lid.person.lastname }} </b>
+        {% else %}
+            <b class="text-danger">Lessen vam mevrouw {{ lid.person.preprovision }} {{ lid.person.lastname }}</b>
+        {% endif %}
+        <hr class="border border-danger"/>
+        {% if lid.registrations is empty %}
+            <p>Deze lid heeft nog niet deelgenomen aan een les.</p>
+        {% endif %}
+        {% for reg in lid.registrations %}
+            <div class="row mb-5" >
+            <div class="col-sm-3">
+                <img src="{{ asset("img/#{reg.lesson.training.imageDir }") }}" class="card-image" alt="">
+            </div>
+            <div class="col-sm-9">
+                <h5 class="card-title">{{ reg.lesson.training.naam }}</h5>
+                <p>{{ reg.lesson.date|date('Y-m-d') }}</p>
+                <p>{{ reg.lesson.time|date("H:i") }}</p>
+                <p>Zaal: {{ reg.lesson.location }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
