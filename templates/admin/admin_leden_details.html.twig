@@ -1,0 +1,43 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block main %}
+    <div class="container mb-5">
+        <p class="content-title text-danger">Details van {{ lid.person.firstname }} {{ lid.person.preprovision }} {{ lid.person.lastname }}</p>
+        <hr class="border border-danger"/>
+        {{ form_start(lidForm,{'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_widget(lidForm) }}
+            <button type="submit" class="btn btn-success">Wijzig</button>
+        {{ form_end(lidForm) }}
+        {% if lid.registrations is empty %}
+            <p>Deze lid heeft nog niet deelgenomen aan een les.</p>
+        {% endif %}
+        <div class="table-responsive-sm mt-5 mb-5">
+            <table class="table">
+                <thead>
+                <th scope="col">Datum</th>
+                <th scope="col">Tijd</th>
+                <th scope="col">Lokaal</th>
+                <th scope="col">Sport</th>
+                <th scope="col">Kosten</th>
+                <th scope="col">Betaald</th>
+                </thead>
+                <tbody>
+                {% for reg in lid.registrations %}
+                    <td>{{ reg.lesson.date|date('Y-m-d') }}</td>
+                    <td>{{ reg.lesson.time|date("H:i") }}</td>
+                    <td>{{ reg.lesson.location }}</td>
+                    <td>{{ reg.lesson.training.naam }}</td>
+                    <td>{{ reg.lesson.training.costs }}</td>
+                    {% if  reg.payment == 1  %}
+                        <td><a href="{{ path('admin_leden_details_wijzig_payment',{lid:reg.member.id,les:reg.lesson.id}) }}"><i class="fas fa-check"></i></a></td>
+                    {% else %}
+                        <td><a href="{{ path('admin_leden_details_wijzig_payment',{lid:reg.member.id,les:reg.lesson.id}) }}"><i class="fas fa-times"></i></a></td>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+

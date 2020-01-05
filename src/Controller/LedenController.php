@@ -6,7 +6,7 @@ use App\Entity\Member;
 use App\Entity\Person;
 use App\Entity\Registration;
 use App\Form\BezoekerFormType;
-use App\Form\BezoekerWIjzigFormType;
+use App\Form\BezoekerWijzigFormType;
 use App\Repository\LessonRepository;
 use App\Repository\MemberRepository;
 use App\Repository\PersonRepository;
@@ -132,17 +132,13 @@ class LedenController extends AbstractController
             $person = $this->getUser();
 
 
-            $bezoekerForm = $this->createForm(BezoekerWIjzigFormType::class, $person);
+            $bezoekerForm = $this->createForm(BezoekerWijzigFormType::class, $person);
 
             $member = $memberRepository->findOneBy([ 'person'=>$person]);
 
             $bezoekerForm['street']->setData($member->getStreet());
             $bezoekerForm['postal_code']->setData($member->getPostalCode());
             $bezoekerForm['city']->setData($member->getPlace());
-            if($bezoekerForm->isSubmitted())
-            {
-                dd($request);
-            }
             $bezoekerForm->handleRequest($request);
 
 
@@ -157,7 +153,7 @@ class LedenController extends AbstractController
                 $em->persist($data);
                 $em->persist($member);
                 $em->flush();
-
+                $this->addFlash('success','Profiel gewijzigd!');
                 return $this->redirectToRoute('leden_home');
 
 

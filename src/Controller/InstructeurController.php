@@ -5,7 +5,7 @@ namespace App\Controller;
 
 
 use App\Form\BezoekerFormType;
-use App\Form\BezoekerWIjzigFormType;
+use App\Form\BezoekerWijzigFormType;
 use App\Form\InstructorWijzigFormType;
 use App\Form\LessenFormType;
 use App\Repository\InstructorRepository;

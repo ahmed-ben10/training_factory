@@ -4,8 +4,11 @@
 namespace App\Controller;
 
 
+use App\Form\AdminLidFormType;
 use App\Form\AdminTrainingenFormType;
+use App\Form\BezoekerWijzigFormType;
 use App\Repository\MemberRepository;
+use App\Repository\RegistrationRepository;
 use App\Repository\TrainingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,16 +46,53 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/leden/lessen/{lid}", name="admin_leden_lessen")
+     * @Route("/admin/leden/details/{lid}", name="admin_leden_details")
      */
-    public function ledenLessen(MemberRepository $memberRepository,$lid)
+    public function ledenDetails(Request $request,EntityManagerInterface $em , MemberRepository $memberRepository,$lid)
     {
-        return $this->render('admin/admin_leden_lessen.html.twig', [
+        $member = $memberRepository->find($lid);
+        $lidForm = $this->createForm(AdminLidFormType::class, $member->getPerson());
+        $lidForm['street']->setData($member->getStreet());
+        $lidForm['postal_code']->setData($member->getPostalCode());
+        $lidForm['city']->setData($member->getPlace());
+        $lidForm->handleRequest($request);
+
+
+        if ($lidForm->isSubmitted() && $lidForm->isValid()) {
+            $data = $lidForm->getData();
+            $member
+                ->setStreet( $lidForm['street']->getData())
+                ->setPostalCode( $lidForm['postal_code']->getData())
+                ->setPlace( $lidForm['city']->getData())
+            ;
+            $em->persist($data);
+            $em->persist($member);
+            $em->flush();
+            $this->addFlash('success','Lid gewijzigd!');
+            return $this->redirectToRoute('admin_leden');
+
+        }
+
+        return $this->render('admin/admin_leden_details.html.twig', [
             'page_name' => 'admin_leden',
-            'lid'=> $memberRepository->find($lid)
+            'lid'=> $member,
+            'lidForm' => $lidForm->createView()
         ]);
     }
+    /**
+     * @Route("/admin/leden/details/{lid}/{les}",name="
+     * ")
+     */
 
+    public function adminLedenDetailsWijzigPayment(EntityManagerInterface $em, MemberRepository $memberRepository, RegistrationRepository $registrationRepository, $lid,$les) {
+        $member = $memberRepository->find($lid);
+        $reg = $registrationRepository->findOneBy(['member'=>$member,'lesson'=>$les]);
+        $payment = $reg->getPayment();
+        $reg->setPayment(!$payment);
+        $em->persist($reg);
+        $em->flush();
+        return $this->redirectToRoute('admin_leden_details',['lid'=>$lid]);
+    }
 
     /**
      * @Route("/admin/trainingen", name="admin_trainingen")

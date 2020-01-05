@@ -16,7 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class BezoekerWIjzigFormType extends AbstractType
+class BezoekerWijzigFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
