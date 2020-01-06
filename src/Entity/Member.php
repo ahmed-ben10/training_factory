@@ -43,6 +43,11 @@ class Member
      */
     private $registrations;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $disabled;
+
     public function __construct()
     {
         $this->registrations = new ArrayCollection();
@@ -128,6 +133,18 @@ class Member
                 $registration->setMember(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setDisabled(bool $disabled): self
+    {
+        $this->disabled = $disabled;
 
         return $this;
     }

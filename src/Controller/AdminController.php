@@ -46,6 +46,21 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/admin/leden/disabled/{lid}", name="admin_leden_wijzig_disabled")
+     */
+    public function ledenDisabled(MemberRepository $memberRepository, EntityManagerInterface $em ,$lid)
+    {
+        $member = $memberRepository->find($lid);
+        $member->setDisabled(!$member->getDisabled());
+        $em->persist($member);
+        $em->flush();
+        $this->addFlash('success','Lid gewijzigd!');
+
+        return $this->redirectToRoute('admin_leden');
+    }
+
+
+    /**
      * @Route("/admin/leden/details/{lid}", name="admin_leden_details")
      */
     public function ledenDetails(Request $request,EntityManagerInterface $em , MemberRepository $memberRepository,$lid)
@@ -80,8 +95,7 @@ class AdminController extends AbstractController
         ]);
     }
     /**
-     * @Route("/admin/leden/details/{lid}/{les}",name="
-     * ")
+     * @Route("/admin/leden/details/{lid}/{les}",name="admin_leden_details_wijzig_payment")
      */
 
     public function adminLedenDetailsWijzigPayment(EntityManagerInterface $em, MemberRepository $memberRepository, RegistrationRepository $registrationRepository, $lid,$les) {

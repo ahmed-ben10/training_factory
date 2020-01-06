@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Form/AdminLidFormType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InstructeurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstructeurController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LedenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BezoekerWIjzigFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerWijzigFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20191218102030.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20200106104930.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/admin_leden.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_leden.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_leden_lessen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_leden_details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden_home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin_leden_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_leden_details.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

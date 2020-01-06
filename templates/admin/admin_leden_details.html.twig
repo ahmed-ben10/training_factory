@@ -6,11 +6,12 @@
         <hr class="border border-danger"/>
         {{ form_start(lidForm,{'attr': {'novalidate': 'novalidate'}}) }}
             {{ form_widget(lidForm) }}
-            <button type="submit" class="btn btn-success">Wijzig</button>
+            <button type="submit" class="btn btn-success mb-5">Wijzig</button>
         {{ form_end(lidForm) }}
         {% if lid.registrations is empty %}
             <p>Deze lid heeft nog niet deelgenomen aan een les.</p>
-        {% endif %}
+        {% else %}
+
         <div class="table-responsive-sm mt-5 mb-5">
             <table class="table">
                 <thead>
@@ -37,6 +38,7 @@
                 </tbody>
             </table>
         </div>
+        {% endif %}
     </div>
 {% endblock %}
 

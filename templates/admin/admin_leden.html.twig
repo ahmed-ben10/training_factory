@@ -25,8 +25,12 @@
                             <td>{{ lid.person.preprovision }}</td>
                             <td>{{ lid.person.lastname }}</td>
                             <td><a href="{{ path('admin_leden_details',{lid:lid.id}) }}">Details</a></td>
-                            <td> !ACTIEF!</td>
-                        </tr>
+
+                            {% if  lid.disabled == 1  %}
+                                <td><a href="{{ path('admin_leden_wijzig_disabled',{lid:lid.id}) }}"><i class="fas fa-check"></i></a></td>
+                            {% else %}
+                                <td><a href="{{ path('admin_leden_wijzig_disabled',{lid:lid.id}) }}"><i class="fas fa-times"></i></a></td>
+                            {% endif %}                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
