@@ -1,10 +1,36 @@
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block main %}
-
+    <div class="container">
+        {% for msg in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ msg }}
+            </div>
+        {%  endfor %}
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Voornaam</th>
+                    <th scope="col">Tussenvoegsel</th>
+                    <th scope="col">Achternaam</th>
+                    <th scope="col">Lessen overzicht</th>
+                    <th scope="col">Omzet</th>
+                    <th scope="col">Verwijderen</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for ins in instucteurs %}
+                    <tr>
+                        <td>{{ ins.person.firstname }}</td>
+                        <td>{{ ins.person.preprovision }}</td>
+                        <td>{{ ins.person.lastname }}</td>
+                        <td><a href="{{ path('admin_instucteurs_lessen',{id:ins.id}) }}">Details</a></td>
+                        <td>OMZET</td>
+                        <td><a href="{{ path('admin_instucteurs_delete',{id:ins.id}) }}" class="btn btn-danger">Verwijderen</a></td>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
-
-{% block header %}
-
-{% endblock %}
-

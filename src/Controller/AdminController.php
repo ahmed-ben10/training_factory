@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Form\AdminLidFormType;
 use App\Form\AdminTrainingenFormType;
 use App\Form\BezoekerWijzigFormType;
+use App\Repository\InstructorRepository;
 use App\Repository\MemberRepository;
 use App\Repository\RegistrationRepository;
 use App\Repository\TrainingRepository;
@@ -29,9 +30,38 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/instucteurs", name="admin_instucteurs")
      */
-    public function instucteurs()
+    public function instucteurs(InstructorRepository $instructorRepository)
     {
-        return $this->render('admin/admin_instucteurs.html.twig', ['page_name' => 'admin_instucteurs']);
+        return $this->render('admin/admin_instucteurs.html.twig', [
+            'page_name' => 'admin_instucteurs',
+            'instucteurs'=>$instructorRepository->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/instucteurs/delete/{id}", name="admin_instucteurs_delete")
+     */
+    public function instucteursDelete(InstructorRepository $instructorRepository ,EntityManagerInterface $em, $id)
+    {
+        $instr = $instructorRepository->find($id);
+        $em->remove($instr);
+        $em->flush();
+        $this->addFlash('success','Instucteur verwijderd!');
+
+        return $this->redirectToRoute('admin_instucteurs');
+    }
+
+    /**
+     * @Route("/admin/instucteurs/lessen/{id}", name="admin_instucteurs_lessen")
+     */
+    public function instucteursLessen(InstructorRepository $instructorRepository, $id)
+    {
+        $instr = $instructorRepository->find($id);
+
+        return $this->render('admin/admin_instucteurs_lessen.html.twig', [
+            'page_name' => 'admin_instucteurs',
+            'instucteur'=>$instr
+        ]);
     }
 
     /**
@@ -55,7 +85,6 @@ class AdminController extends AbstractController
         $em->persist($member);
         $em->flush();
         $this->addFlash('success','Lid gewijzigd!');
-
         return $this->redirectToRoute('admin_leden');
     }
 

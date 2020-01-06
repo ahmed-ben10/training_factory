@@ -1,0 +1,39 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block main %}
+    <div class="container mb-5">
+        <p class="content-title text-danger">Details van {{ instucteur.person.firstname }} {{ instucteur.person.preprovision }} {{ instucteur.person.lastname }}</p>
+        <hr class="border border-danger"/>
+{#        {{ form_start(instrForm,{'attr': {'novalidate': 'novalidate'}}) }}#}
+{#        {{ form_widget(instrForm) }}#}
+{#        <button type="submit" class="btn btn-success mb-5">Wijzig</button>#}
+{#        {{ form_end(instrForm) }}#}
+        {% if instucteur.lessons is empty %}
+            <p>Deze instructeur heeft nog geen les toegeveogd.</p>
+        {% else %}
+
+            <div class="table-responsive-sm mt-5 mb-5">
+                <table class="table">
+                    <thead>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Tijd</th>
+                    <th scope="col">Lokaal</th>
+                    <th scope="col">Sport</th>
+                    <th scope="col">Kosten</th>
+                    </thead>
+                    <tbody>
+                    {% for lesson in instucteur.lessons %}
+                        <td>{{ lesson.date|date('Y-m-d') }}</td>
+                        <td>{{ lesson.time|date("H:i") }}</td>
+                        <td>{{ lesson.location }}</td>
+                        <td>{{ lesson.training.naam }}</td>
+                        <td>{{ lesson.training.costs }}</td>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
