@@ -25,7 +25,6 @@ class BezoekerWijzigFormType extends AbstractType
             ->add('preprovision',TextType::class,['label'=>'Tussenvoegsel'])
             ->add('lastname',TextType::class,['label'=>'Achternaam*','empty_data'=>'','required'=>false])
             ->add('dateofbirth',BirthdayType::class,['label'=>'Geboortedatum*','empty_data'=>'','required'=>false])
-            ->add('loginname',TextType::class,['label'=>'Gebruikersnaam*','empty_data'=>'','required'=>false])
             ->add('gender',ChoiceType::class, [
                 'label'=>'Man/Vrouw',
                 'choices' => [

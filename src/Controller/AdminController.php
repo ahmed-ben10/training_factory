@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Form\AdminLidFormType;
 use App\Form\AdminTrainingenFormType;
 use App\Form\BezoekerWijzigFormType;
+use App\Form\InstructorWijzigFormType;
 use App\Repository\InstructorRepository;
 use App\Repository\MemberRepository;
 use App\Repository\RegistrationRepository;
@@ -52,15 +53,24 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/instucteurs/lessen/{id}", name="admin_instucteurs_lessen")
+     * @Route("/admin/instucteurs/details/{id}", name="admin_instucteurs_details")
      */
-    public function instucteursLessen(InstructorRepository $instructorRepository, $id)
+    public function instucteursLessen(InstructorRepository $instructorRepository, EntityManagerInterface $em , Request $request, $id)
     {
         $instr = $instructorRepository->find($id);
-
-        return $this->render('admin/admin_instucteurs_lessen.html.twig', [
+        $instructorForm = $this->createForm(InstructorWijzigFormType::class, $this->getUser());
+        $instructorForm->handleRequest($request);
+        if($instructorForm->isSubmitted() && $instructorForm->isValid()){
+            $data = $instructorForm->getData();
+            $em->persist($data);
+            $em->flush();
+            $this->addFlash('success','Instructuer is gewijzgd!');
+            return $this->redirectToRoute('admin_instucteurs');
+        }
+        return $this->render('admin/admin_instucteurs_details.html.twig', [
             'page_name' => 'admin_instucteurs',
-            'instucteur'=>$instr
+            'instucteur'=>$instr,
+            'instrForm'=>$instructorForm->createView()
         ]);
     }
 

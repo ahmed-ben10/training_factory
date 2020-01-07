@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BezoekerWijzigFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerWijzigFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InstructorWijzigFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InstructorWijzigFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs_lessen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs_details.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -203,6 +209,7 @@
       <workItem from="1577369294679" duration="4623000" />
       <workItem from="1577748170717" duration="953000" />
       <workItem from="1578329489394" duration="4832000" />
+      <workItem from="1578416596601" duration="1988000" />
     </task>
     <servers />
   </component>
@@ -232,11 +239,6 @@
           <url>file://$PROJECT_DIR$/templates/instructeur/instructeur_lessen_beheer_deelnemerlijst.html.twig</url>
           <line>5</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig</url>
-          <line>13</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/admin/admin_leden_details.html.twig</url>
