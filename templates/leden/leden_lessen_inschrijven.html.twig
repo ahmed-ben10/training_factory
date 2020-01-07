@@ -43,15 +43,19 @@
                     <div class="col-sm-9">
                         <h5 class="card-title">{{ les.training.naam }}, {{ les.id }}</h5>
                         <p>{{ les.time|date("H:i") }}</p>
-                        {% if  registrations.checkRepeatedRegistration(member,les)|length > 0 %}
-                            <p class="content-title">U heeft zich al ingeschreven bij deze les.</p>
-                        {% endif %}
-                        {% if les.maxPersons <= registrations.memberCount(les)|length %}
-                            <p class="content-title">Excuses, de les is al vol.</p>
-                            <p class="content-title">Probeer een andere les.</p>
-                        {% endif %}
-                        {% if les.maxPersons > registrations.memberCount(les)|length and  registrations.checkRepeatedRegistration(member,les)|length == 0 %}
-                            <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
+                        {% if member.disabled == 0 %}
+                            <p>U kunt zich niet inschrijven op een les. Voor meer informatie moet u <a href="{{ path('bezoeker_contact') }}">contact</a> met ons.</p>
+                        {% else %}
+                            {% if  registrations.checkRepeatedRegistration(member,les)|length > 0 %}
+                                <p class="content-title">U heeft zich al ingeschreven bij deze les.</p>
+                            {% endif %}
+                            {% if les.maxPersons <= registrations.memberCount(les)|length %}
+                                <p class="content-title">Excuses, de les is al vol.</p>
+                                <p class="content-title">Probeer een andere les.</p>
+                            {% endif %}
+                            {% if les.maxPersons > registrations.memberCount(les)|length and  registrations.checkRepeatedRegistration(member,les)|length == 0 %}
+                                <a href="{{ path('leden_lessen_inschrijven',{id:les.id}) }}" class="btn btn-primary">Schrijf in!</a>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
