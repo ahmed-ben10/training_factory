@@ -82,9 +82,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
-        }
 
         $user = $this->entityManager->getRepository(Person::class)->findOneBy(['emailaddress' => $request->request->get('emailaddress')]);
        $rolen = [
@@ -92,16 +89,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
          'instructeur'=>"ROLE_INSTRUCTEUR",
          'leden'=>"ROLE_MEMBER"
        ];
-//        if($user->getRoles()[0] ==  $rolen['admin']){
-//            return new RedirectResponse('/admin');
-//        } else if($user->getRoles()[0] ==  $rolen['instructeur']){
-//            return new RedirectResponse('/instructeur');
-//        } else if($user->getRoles()[0] ==  $rolen['leden']){
-//            return new RedirectResponse('/leden');
-//        }
-//        else{
-//            throw new CustomUserMessageAuthenticationException('Sorry, er is iets misgegaan neem contact op met onze klanteservive.');
-//        }
 
         switch ($user->getRoles()[0]){
             case $rolen['admin']:

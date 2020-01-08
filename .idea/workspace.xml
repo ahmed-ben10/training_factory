@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/uploads/trainingen/Vega.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/uploads/trainingen/foto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/uploads/trainingen/foto.php.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/uploads/trainingen/foto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/InstructorFormType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BezoekerWijzigFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BezoekerWijzigFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/InstructorWijzigFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InstructorWijzigFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs_lessen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs_details.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -244,6 +246,15 @@
           <url>file://$PROJECT_DIR$/templates/admin/admin_leden_details.html.twig</url>
           <line>3</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php</url>
+          <line>82</line>
+          <properties>
+            <option name="className" value="\App\Security\LoginFormAuthenticator" />
+            <option name="methodName" value="onAuthenticationSuccess" />
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

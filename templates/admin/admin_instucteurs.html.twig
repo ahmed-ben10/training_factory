@@ -7,7 +7,7 @@
                 {{ msg }}
             </div>
         {%  endfor %}
-        <div class="table-responsive-sm">
+        <div class="table-responsive-sm mb-5">
             <table class="table">
                 <thead>
                 <tr>
@@ -31,6 +31,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <a href="{{ path('admin_instucteurs') }}" class="btn btn-success mb-3">Nieuw</a>
         </div>
     </div>
 {% endblock %}

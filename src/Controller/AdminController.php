@@ -58,13 +58,34 @@ class AdminController extends AbstractController
     public function instucteursLessen(InstructorRepository $instructorRepository, EntityManagerInterface $em , Request $request, $id)
     {
         $instr = $instructorRepository->find($id);
-        $instructorForm = $this->createForm(InstructorWijzigFormType::class, $this->getUser());
+        $instructorForm = $this->createForm(InstructorWijzigFormType::class, $instr->getPerson());
         $instructorForm->handleRequest($request);
         if($instructorForm->isSubmitted() && $instructorForm->isValid()){
             $data = $instructorForm->getData();
             $em->persist($data);
             $em->flush();
             $this->addFlash('success','Instructuer is gewijzgd!');
+            return $this->redirectToRoute('admin_instucteurs');
+        }
+        return $this->render('admin/admin_instucteurs_details.html.twig', [
+            'page_name' => 'admin_instucteurs',
+            'instucteur'=>$instr,
+            'instrForm'=>$instructorForm->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/instucteurs/create", name="admin_instucteurs_toevoegen")
+     */
+    public function instucteursNew(InstructorRepository $instructorRepository, EntityManagerInterface $em , Request $request)
+    {
+        $instructorForm = $this->createForm(InstructorFormType::class);
+        $instructorForm->handleRequest($request);
+        if($instructorForm->isSubmitted() && $instructorForm->isValid()){
+            $data = $instructorForm->getData();
+            $em->persist($data);
+            $em->flush();
+            $this->addFlash('success','Instructuer is gemaakt!');
             return $this->redirectToRoute('admin_instucteurs');
         }
         return $this->render('admin/admin_instucteurs_details.html.twig', [
