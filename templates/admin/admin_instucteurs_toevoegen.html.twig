@@ -1,0 +1,11 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block main %}
+    <div class="container mb-5">
+        {{ form_start(instrForm,{'attr': {'novalidate': 'novalidate','class':'mb-5'}}) }}
+            {{ form_widget(instrForm) }}
+            <button type="submit" class="btn btn-success mb-5">Wijzig</button>
+        {{ form_end(instrForm) }}    </div>
+{% endblock %}
+
+

@@ -4,9 +4,11 @@
 namespace App\Controller;
 
 
+use App\Entity\Instructor;
 use App\Form\AdminLidFormType;
 use App\Form\AdminTrainingenFormType;
 use App\Form\BezoekerWijzigFormType;
+use App\Form\InstructorFormType;
 use App\Form\InstructorWijzigFormType;
 use App\Repository\InstructorRepository;
 use App\Repository\MemberRepository;
@@ -81,16 +83,19 @@ class AdminController extends AbstractController
     {
         $instructorForm = $this->createForm(InstructorFormType::class);
         $instructorForm->handleRequest($request);
+        $instr = new Instructor();
         if($instructorForm->isSubmitted() && $instructorForm->isValid()){
             $data = $instructorForm->getData();
+            $instr->setSalary($instructorForm['salary']->getData());
+            $instr->setHiringDate(new \DateTime());
+            $em->persist($instr);
             $em->persist($data);
             $em->flush();
             $this->addFlash('success','Instructuer is gemaakt!');
             return $this->redirectToRoute('admin_instucteurs');
         }
-        return $this->render('admin/admin_instucteurs_details.html.twig', [
+        return $this->render('admin/admin_instucteurs_toevoegen.html.twig', [
             'page_name' => 'admin_instucteurs',
-            'instucteur'=>$instr,
             'instrForm'=>$instructorForm->createView()
         ]);
     }

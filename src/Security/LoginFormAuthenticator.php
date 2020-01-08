@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\Member;
 use App\Entity\Person;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,6 +28,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $rolen = [
+                'admin'=>"ROLE_ADMIN",
+                'instructeur'=>"ROLE_INSTRUCTEUR",
+                'leden'=>"ROLE_MEMBER"
+            ];
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $encoder)
     {
@@ -66,10 +72,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         $user = $this->entityManager->getRepository(Person::class)->findOneBy(['emailaddress' => $credentials['emailaddress']]);
-
+        if($user->getRoles()[0] == $this->rolen['leden']){
+            $mem = $this->entityManager->getRepository(Member::class)->findOneBy(['person' =>$user]);
+            if(!$mem->getDisabled()){
+                throw new CustomUserMessageAuthenticationException('Uw account is geblokeerd. Neem contact op met onze administratie');
+            }
+        }
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Emailaddress could not be found.');
+            throw new CustomUserMessageAuthenticationException('Email bestaat niet.');
         }
 
         return $user;
@@ -84,20 +95,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
 
         $user = $this->entityManager->getRepository(Person::class)->findOneBy(['emailaddress' => $request->request->get('emailaddress')]);
-       $rolen = [
-         'admin'=>"ROLE_ADMIN",
-         'instructeur'=>"ROLE_INSTRUCTEUR",
-         'leden'=>"ROLE_MEMBER"
-       ];
 
         switch ($user->getRoles()[0]){
-            case $rolen['admin']:
+            case $this->rolen['admin']:
                 return new RedirectResponse('/admin');
                 break;
-            case $rolen['instructeur']:
+            case $this->rolen['instructeur']:
                 return new RedirectResponse('/instructeur');
                 break;
-            case $rolen['leden']:
+            case $this->rolen['leden']:
                 return new RedirectResponse('/leden');
                 break;
             default:
