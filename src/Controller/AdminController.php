@@ -86,10 +86,12 @@ class AdminController extends AbstractController
         $instr = new Instructor();
         if($instructorForm->isSubmitted() && $instructorForm->isValid()){
             $data = $instructorForm->getData();
+            $data->setRoles(["ROLE_INSTRUCTEUR"]);
             $instr->setSalary($instructorForm['salary']->getData());
             $instr->setHiringDate(new \DateTime());
-            $em->persist($instr);
+//            dd($data, $instr);
             $em->persist($data);
+            $em->persist($instr);
             $em->flush();
             $this->addFlash('success','Instructuer is gemaakt!');
             return $this->redirectToRoute('admin_instucteurs');

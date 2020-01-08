@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/uploads/trainingen/foto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs_toevoegen.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/InstructorFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InstructorFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200106181644.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20200108195331.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -209,6 +205,7 @@
       <workItem from="1577748170717" duration="953000" />
       <workItem from="1578329489394" duration="4832000" />
       <workItem from="1578416596601" duration="1988000" />
+      <workItem from="1578510233245" duration="3654000" />
     </task>
     <servers />
   </component>
@@ -243,6 +240,11 @@
           <url>file://$PROJECT_DIR$/templates/admin/admin_leden_details.html.twig</url>
           <line>3</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig</url>
+          <line>22</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
