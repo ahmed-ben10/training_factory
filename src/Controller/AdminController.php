@@ -11,6 +11,7 @@ use App\Form\BezoekerWijzigFormType;
 use App\Form\InstructorFormType;
 use App\Form\InstructorWijzigFormType;
 use App\Repository\InstructorRepository;
+use App\Repository\LessonRepository;
 use App\Repository\MemberRepository;
 use App\Repository\RegistrationRepository;
 use App\Repository\TrainingRepository;
@@ -33,12 +34,14 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/instucteurs", name="admin_instucteurs")
      */
-    public function instucteurs(InstructorRepository $instructorRepository)
+    public function instucteurs(InstructorRepository $instructorRepository , RegistrationRepository $registrationRepository,LessonRepository $lessonRepository)
     {
         return $this->render('admin/admin_instucteurs.html.twig', [
             'page_name' => 'admin_instucteurs',
             'instucteurs'=>$instructorRepository->findAll(),
-            ''
+            'lessenRepo'=>$lessonRepository,
+            'registrationRepo'=>$registrationRepository
+
         ]);
     }
 

@@ -33,10 +33,14 @@ class RegistrationRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function getOmzet($mem,$les){
+    public function getOmzet($lessen){
         $em = $this->getEntityManager();
-        $query =$em->createQuery("SELECT registration FROM App:Registration registration WHERE registration.instr = :memberId AND registration.lesson = :lessonId");
-        $query->execute(['memberId'=>$mem,'lessonId'=>$les]);
+        $registrations = array();
+        foreach ($lessen as $les) {
+            $query =$em->createQuery("SELECT registration FROM App:Registration registration WHERE registration.payment = 1 AND registration.lesson = :lessonId");
+            $query->execute(['lessonId'=>$les]);
+            array_pop($registrations,$query->getResult()) ;
+        }
         return $query->getResult();
     }
 
