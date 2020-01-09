@@ -41,18 +41,6 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/instucteurs/delete/{id}", name="admin_instucteurs_delete")
-     */
-    public function instucteursDelete(InstructorRepository $instructorRepository ,EntityManagerInterface $em, $id)
-    {
-        $instr = $instructorRepository->find($id);
-        $em->remove($instr);
-        $em->flush();
-        $this->addFlash('success','Instucteur verwijderd!');
-
-        return $this->redirectToRoute('admin_instucteurs');
-    }
 
     /**
      * @Route("/admin/instucteurs/details/{id}", name="admin_instucteurs_details")
@@ -74,6 +62,26 @@ class AdminController extends AbstractController
             'instucteur'=>$instr,
             'instrForm'=>$instructorForm->createView()
         ]);
+    }
+
+    /**
+     * @Route("/admin/instucteurs/delete/{id}", name="admin_instucteurs_delete")
+     */
+    public function instucteursLessenDelete(InstructorRepository $instructorRepository, EntityManagerInterface $em , $id)
+    {
+        $instructor= $instructorRepository->find($id);
+        foreach ($instructor->getLessons() as $lesson) {
+            foreach ( $lesson->getRegistrations() as $reg) {
+                $em->remove($reg);
+            }
+            $em->remove($lesson);
+        }
+        $em->remove($instructor);
+        $em->flush();
+
+        $this->addFlash('success','Instucteur verwijderd!');
+
+        return $this->redirectToRoute('admin_instucteurs');
     }
 
     /**
