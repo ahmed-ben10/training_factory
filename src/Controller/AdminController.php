@@ -37,7 +37,8 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/admin_instucteurs.html.twig', [
             'page_name' => 'admin_instucteurs',
-            'instucteurs'=>$instructorRepository->findAll()
+            'instucteurs'=>$instructorRepository->findAll(),
+            ''
         ]);
     }
 
@@ -97,7 +98,6 @@ class AdminController extends AbstractController
             $data->setRoles(["ROLE_INSTRUCTEUR"]);
             $instr->setSalary($instructorForm['salary']->getData());
             $instr->setHiringDate(new \DateTime());
-//            dd($data, $instr);
             $em->persist($data);
             $em->persist($instr);
             $em->flush();

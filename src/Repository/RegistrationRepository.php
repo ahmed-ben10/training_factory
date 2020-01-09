@@ -21,14 +21,21 @@ class RegistrationRepository extends ServiceEntityRepository
 
     public function getMemberCount($val){
         $em = $this->getEntityManager();
-        $query =$em->createQuery("SELECT registration FROM App:Registration registration WHERE registration.lesson = :id");
+        $query =$em->createQuery("SELECT registration FROM App:Registration registration WHERE lesson.instructor = :id AND registration.lesson = lesson");
         $query->execute(['id'=>$val]);
         return $query->getResult();
     }
 
     public function checkRepeatedRegistration($mem,$les){
         $em = $this->getEntityManager();
-        $query =$em->createQuery("SELECT registration FROM App:Registration registration WHERE registration.member = :memberId AND registration.lesson = :lessonId");
+        $query =$em->createQuery("SELECT registration FROM App:Registration registration , App:Lesson lessen WHERE registration.lesson = :memberId AND registration.lesson = :lessonId");
+        $query->execute(['memberId'=>$mem,'lessonId'=>$les]);
+        return $query->getResult();
+    }
+
+    public function getOmzet($mem,$les){
+        $em = $this->getEntityManager();
+        $query =$em->createQuery("SELECT registration FROM App:Registration registration WHERE registration.instr = :memberId AND registration.lesson = :lessonId");
         $query->execute(['memberId'=>$mem,'lessonId'=>$les]);
         return $query->getResult();
     }
