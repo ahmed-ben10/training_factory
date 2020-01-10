@@ -35,6 +35,12 @@ class Person implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Vul een voornaam in")
+     * @Assert\Regex(
+     *     pattern     = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[?!-‌​/_/=:;§]).{8,20}+$/i",
+     *     htmlPattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[?!-‌​/_/=:;§]).{8,20}$/",
+     *     match=true,
+     *     message="message error ")
+     * @var string
      */
     private $firstname;
 

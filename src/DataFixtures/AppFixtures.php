@@ -8,15 +8,17 @@ use App\Entity\Person;
 use App\Entity\Training;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
     private $passwordEncoder;
-
+    private $faker;
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->passwordEncoder = $encoder;
+        $this->faker = Factory::create();
     }
 
     public function load(ObjectManager $manager)
@@ -27,9 +29,9 @@ class AppFixtures extends Fixture
                 ->setEmailaddress('test' .$i . '@hotmail.com')
                 ->setLoginname('test' . $i)
                 ->setPassword($this->passwordEncoder->encodePassword($personAdmin,'test' . $i))
-                ->setFirstname('naam' . $i)
-                ->setLastname('achternaam'. $i)
-                ->setGender('Man')
+                ->setFirstname($this->faker->firstName)
+                ->setLastname($this->faker->lastName)
+                ->setGender($this->faker->randomElement(['Man','Vrouw']))
                 ->setRoles(['ROLE_ADMIN'])
                 ->setDateofbirth(new \DateTime())
             ;
@@ -44,9 +46,9 @@ class AppFixtures extends Fixture
                 ->setEmailaddress('in' .$i . '@hotmail.com')
                 ->setLoginname('in' . $i)
                 ->setPassword($this->passwordEncoder->encodePassword($personInstructeur,'in' . $i))
-                ->setFirstname('naam' . $i)
-                ->setLastname('achternaam'. $i)
-                ->setGender('Vrouw')
+                ->setFirstname($this->faker->firstName)
+                ->setLastname($this->faker->lastName)
+                ->setGender($this->faker->randomElement(['Man','Vrouw']))
                 ->setRoles(['ROLE_INSTRUCTEUR'])
                 ->setDateofbirth(new \DateTime())
             ;
@@ -66,9 +68,9 @@ class AppFixtures extends Fixture
                 ->setEmailaddress('me' .$i . '@hotmail.com')
                 ->setLoginname('me' . $i)
                 ->setPassword($this->passwordEncoder->encodePassword($personMember,'me' . $i))
-                ->setFirstname('naam' . $i)
-                ->setLastname('achternaam'. $i)
-                ->setGender('Man')
+                ->setFirstname($this->faker->firstName)
+                ->setLastname($this->faker->lastName)
+                ->setGender($this->faker->randomElement(['Man','Vrouw']))
                 ->setRoles(['ROLE_MEMBER'])
                 ->setDateofbirth(new \DateTime())
             ;
