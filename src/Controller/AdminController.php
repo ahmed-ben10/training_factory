@@ -18,6 +18,7 @@ use App\Repository\TrainingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -45,6 +46,48 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/instucteurs/omzet/{id}", name="admin_instucteurs_omzet")
+     */
+    public function instucteursOmzet(InstructorRepository $instructorRepository , RegistrationRepository $registrationRepository,LessonRepository $lessonRepository, $id){
+        $months = array();
+        for($m=1; $m<=12; ++$m){
+            array_push($months,['month'=> date('F', mktime(0, 0, 0, $m, 1)), 'month_num'=>$m]);
+        }
+        return $this->render('admin/admin_instucteurs_omzet.html.twig', [
+            'page_name' => 'admin_instucteurs',
+            'instucteurs'=>$instructorRepository->findAll(),
+            'lessenRepo'=>$lessonRepository,
+            'registrationRepo'=>$registrationRepository,
+            'months'=> $months
+        ]);
+    }
+
+    /**
+     * @Route("/admin/instucteurs/omzet/month/", name="admin_instucteurs_omzet_month")
+     */
+    public function instucteursOmzetMonth(Request $request,InstructorRepository $instructorRepository , RegistrationRepository $registrationRepository,LessonRepository $lessonRepository){
+        if($request->request->get('month')){
+            //make something curious, get some unbelieveable data
+            $omzet = 0;
+            foreach ( $lessonRepository->findBy(['instructor' => $instructorRepository->findBy(['id' => $request->request->get('id')])]) as $les){
+                if($les->getDate()->format("m") == $request->request->get('month') ) {
+                    foreach ($registrationRepository->findBy(['lesson' => $les]) as $reg) {
+                        if ($reg->getPayment()) {
+                            $omzet += $les->getTraining()->getCosts();
+                        }
+                    }
+                }
+            }
+            $arrData = [
+                'output' => $request->request->get('month') ,
+                'id'=> number_format($omzet,2)
+            ];
+            return new JsonResponse($arrData);
+        }
+
+        return $this->render('leden/leden_home.html.twig');
+    }
 
     /**
      * @Route("/admin/instucteurs/details/{id}", name="admin_instucteurs_details")
@@ -204,7 +247,6 @@ class AdminController extends AbstractController
         $em->flush();
         $this->addFlash('success','Trraining verwijderd!');
         return $this->redirectToRoute('admin_trainingen');
-
     }
 
     /**

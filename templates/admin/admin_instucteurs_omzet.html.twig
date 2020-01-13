@@ -1,0 +1,41 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block main %}
+    <select class="custom-select" id="month-select">
+        <option selected>Kies</option>
+        {% for month in months %}
+            <option value="{{ month.month_num }}">{{ month.month }}</option>
+        {% endfor %}
+    </select>
+
+    <div id="ajax-results">Kies een maand</div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).on('click', 'select.custom-select', function(){
+            that = $(this);
+            $.ajax({
+                url:'{{ (path('admin_instucteurs_omzet_month')) }}',
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "month": this.value,
+                    "id": window.location.href.split('http://127.0.0.1:8000/admin/instucteurs/omzet/')
+                },
+                async: true,
+                success: function (data)
+                {
+                    console.log(data)
+                    $('div#ajax-results').html(data.id);
+
+                }
+            });
+            return false;
+
+        });
+    </script>
+{% endblock %}

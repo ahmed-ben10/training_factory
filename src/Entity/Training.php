@@ -38,7 +38,7 @@ class Training
     private $duration;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", nullable=true, precision=10, scale=2)
      */
     private $costs;
 
