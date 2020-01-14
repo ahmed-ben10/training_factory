@@ -2,41 +2,44 @@
 
 {% block main %}
     <div class="container">
+        <p class="content-title text-danger">Lessen</p>
+        <hr class="border border-danger"/>
         {% for msg in app.session.flashbag.get('success') %}
             <div class="alert alert-success">
                 {{ msg }}
             </div>
         {%  endfor %}
-        <div class="table-responsive-sm">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Tijd</th>
-                    <th scope="col">Lokaal</th>
-                    <th scope="col">Sport</th>
-                    <th scope="col">Aantal ingeshcreven deelnemers</th>
-                    <th scope="col">Prijs</th>
-                    <th scope="col">Uitschrijven</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{ dump() }}
-                {% for les in myLessons %}
+        {% if myLessons is empty %}
+            <p class="mb-5"> U heeft zich niet ingeschreven voor een les.</p>
+        {% else %}
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>{{ les.lesson.date|date("m-d-Y") }}</td>
-                        <td>{{ les.lesson.time|date("H:i") }}</td>
-                        <td>{{ les.lesson.location }}</td>
-                        <td>{{ les.lesson.training.naam }}</td>
-                        <td>{{ registrations.memberCount(les.lesson)|length }}</td>
-                        <td>&euro;{{ les.lesson.training.costs }}</td>
-                        <td><a href="{{ path('leden_lessen_uitschrijven',{id:les.id}) }}"  class="btn btn-primary">Uitschrijven</a></td>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Tijd</th>
+                        <th scope="col">Lokaal</th>
+                        <th scope="col">Sport</th>
+                        <th scope="col">Aantal ingeshcreven deelnemers</th>
+                        <th scope="col">Prijs</th>
+                        <th scope="col">Uitschrijven</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <button class="ajax">click me!</button>
-        <div id="ajax-results">here comes the result</div>
+                    </thead>
+                    <tbody>
+                    {% for les in myLessons %}
+                        <tr>
+                            <td>{{ les.lesson.date|date("m-d-Y") }}</td>
+                            <td>{{ les.lesson.time|date("H:i") }}</td>
+                            <td>{{ les.lesson.location }}</td>
+                            <td>{{ les.lesson.training.naam }}</td>
+                            <td>{{ registrations.memberCount(les.lesson)|length }}</td>
+                            <td>&euro;{{ les.lesson.training.costs|number_format(2,'.',',') }}</td>
+                            <td><a href="{{ path('leden_lessen_uitschrijven',{id:les.id}) }}"  class="btn btn-primary">Uitschrijven</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

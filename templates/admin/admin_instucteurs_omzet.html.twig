@@ -1,14 +1,22 @@
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block main %}
-    <select class="custom-select" id="month-select">
-        <option selected>Kies</option>
-        {% for month in months %}
-            <option value="{{ month.month_num }}">{{ month.month }}</option>
-        {% endfor %}
-    </select>
+    <div class="container mb-5">
+        <div class="row mb-5">
+            <div class="col-sm-6">
+                <select class="custom-select" id="month-select">
+                    <option selected>Kies</option>
+                    {% for month in months %}
+                        <option value="{{ month.month_num }}">{{ month.month }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <div id="ajax-results">Kies een maand</div>
+            </div>
+        </div>
+    </div>
 
-    <div id="ajax-results">Kies een maand</div>
 
 {% endblock %}
 
@@ -30,7 +38,7 @@
                 success: function (data)
                 {
                     console.log(data)
-                    $('div#ajax-results').html(data.id);
+                    $('div#ajax-results').html("&euro;" +data.id);
 
                 }
             });

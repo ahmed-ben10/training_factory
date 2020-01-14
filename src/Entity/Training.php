@@ -49,6 +49,13 @@ class Training
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
+     * @Assert\Image(````````````````````````)
      */
     private $image_dir;
 

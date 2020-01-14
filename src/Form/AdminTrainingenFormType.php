@@ -17,14 +17,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class AdminTrainingenFormType extends AbstractType  {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
-            ->add('naam',TextType::class,['label'=>'Naam*'] )
-            ->add('description',TextareaType::class,['label'=>'Beschrijving*'] )
-            ->add('costs',MoneyType::class,['label'=>'Kosten'] )
+            ->add('naam',TextType::class,['label'=>'Naam*', 'empty_data'=>''] )
+            ->add('description',TextareaType::class,['label'=>'Beschrijving*', 'empty_data'=>''] )
+            ->add('costs',MoneyType::class,['label'=>'Kosten', 'empty_data'=>''] )
             ->add('duration',TimeType::class,[
                 'label'=>'Tijd',
-                'widget'=>'choice'
+                'widget'=>'choice',
+                'empty_data'=>''
             ])
-            ->add('image_dir',FileType::class,['label'=>'Kies een foto', 'mapped'=>false])
+            ->add('image_dir',FileType::class,['label'=>'Kies een foto', 'empty_data'=>''])
          ;
     }
 

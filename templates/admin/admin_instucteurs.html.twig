@@ -37,7 +37,7 @@
 {#                        {% endfor %}#}
 {#                        <td>{{ costs }}</td>#}
 {#                        <td>{{ registrationRepo.omzet( lessenRepo.findBy({'instructor':ins.id}) ) }}</td>#}
-                        <td><a href="{{ path('admin_instucteurs_omzet',{id:ins.id}) }}" class="btn btn-danger">Omzet</a></td>
+                        <td><a href="{{ path('admin_instucteurs_omzet',{id:ins.id}) }}" >Omzet</a></td>
                         <td><a href="{{ path('admin_instucteurs_delete',{id:ins.id}) }}" class="btn btn-danger">Verwijderen</a></td>
                 {% endfor %}
                 </tbody>
