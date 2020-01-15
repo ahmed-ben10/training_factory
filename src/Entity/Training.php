@@ -55,7 +55,6 @@ class Training
      *     minHeight = 200,
      *     maxHeight = 400
      * )
-     * @Assert\Image(````````````````````````)
      */
     private $image_dir;
 

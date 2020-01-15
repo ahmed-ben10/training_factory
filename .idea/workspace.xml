@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ae122b-c136-4262-a2b2-2c4070bfce1d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/uploads/trainingen/dora-de-verkenner-cat-1280x720.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/uploads/trainingen/phpstorm64.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Training.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Training.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AdminTrainingenFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AdminTrainingenFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/admin_instucteurs_omzet.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin_instucteurs_omzet.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden_inschrijven_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_inschrijven_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden_lessen_inschrijven.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200113114910.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20200115080305.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -214,6 +208,7 @@
       <workItem from="1578416596601" duration="1988000" />
       <workItem from="1578510233245" duration="3654000" />
       <workItem from="1578595716784" duration="5636000" />
+      <workItem from="1579075057480" duration="656000" />
     </task>
     <servers />
   </component>
