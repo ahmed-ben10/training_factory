@@ -80,8 +80,8 @@ class AdminController extends AbstractController
                 }
             }
             $arrData = [
-                'output' => $request->request->get('month') ,
-                'id'=> number_format($omzet,2)
+                'month_num' => $request->request->get('month') ,
+                'omzet'=> number_format($omzet,2)
             ];
             return new JsonResponse($arrData);
         }
