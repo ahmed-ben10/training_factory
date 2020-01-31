@@ -32,7 +32,8 @@
                 dataType: "json",
                 data: {
                     "month": this.value,
-                    "id": window.location.href.split('http://127.0.0.1:8000/admin/instucteurs/omzet/')
+                    // "id": window.location.href.split('http://127.0.0.1:8000/admin/instucteurs/omzet/')
+                    "id": {{ instucteur.id }}
                 },
                 async: true,
                 success: function (data)

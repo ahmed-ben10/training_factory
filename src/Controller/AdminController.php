@@ -56,7 +56,7 @@ class AdminController extends AbstractController
         }
         return $this->render('admin/admin_instucteurs_omzet.html.twig', [
             'page_name' => 'admin_instucteurs',
-            'instucteurs'=>$instructorRepository->findAll(),
+            'instucteur'=>$instructorRepository->find($id),
             'lessenRepo'=>$lessonRepository,
             'registrationRepo'=>$registrationRepository,
             'months'=> $months
